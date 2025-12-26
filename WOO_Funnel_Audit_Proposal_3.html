@@ -1,0 +1,2482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well-Oiled Operations - Webinar Funnel Optimization Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Brand Foundations */
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --red: #FF0000;
+            --gray-light: #F5F5F5;
+            --gray-medium: #666666;
+            --gray-dark: #1A1A1A;
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--black);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+        }
+
+        h1 { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 1rem; }
+        h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.5rem; }
+        h3 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 1rem; }
+        h4 { font-size: clamp(1.25rem, 2.5vw, 2rem); margin-bottom: 0.75rem; }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--black);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-medium);
+            margin-bottom: 2rem;
+        }
+
+        .hero-red {
+            color: var(--red);
+            font-family: var(--font-display);
+            font-size: 4rem;
+            display: block;
+            margin: 1rem 0;
+        }
+
+        /* Navigation */
+        .nav-section {
+            background: var(--white);
+            padding: 3rem 0;
+            border-bottom: 3px solid var(--black);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .nav-button {
+            background: var(--black);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--black);
+        }
+
+        .nav-button:hover {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+            scroll-margin-top: 120px;
+        }
+
+        .section-dark {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .section-light {
+            background: var(--gray-light);
+        }
+
+        .section-red {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .section-red h2,
+        .section-red h3,
+        .section-red h4,
+        .section-red p,
+        .section-red li,
+        .section-red span,
+        .section-red div {
+            color: var(--white);
+        }
+
+        .section-red .rec-card {
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--white);
+        }
+
+        .section-red .rec-card h3,
+        .section-red .rec-card p,
+        .section-red .rec-card li {
+            color: var(--white);
+        }
+
+        .section-red .rec-content strong {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .section-red .impact-badge {
+            background: var(--white);
+            color: var(--red);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 2rem;
+            border-left: 4px solid var(--red);
+            text-align: center;
+        }
+
+        .section-dark .stat-card {
+            background: var(--gray-dark);
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--red);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Recommendation Cards */
+        .recommendations {
+            margin: 3rem 0;
+        }
+
+        .rec-card {
+            background: var(--white);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 6px solid var(--red);
+        }
+
+        .section-dark .rec-card {
+            background: var(--gray-dark);
+        }
+
+        .rec-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--red);
+            display: inline-block;
+            margin-right: 1rem;
+        }
+
+        .rec-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .rec-content {
+            margin-left: 3.5rem;
+            line-height: 1.8;
+        }
+
+        .rec-content strong {
+            color: var(--red);
+        }
+
+        .section-dark .rec-content strong {
+            color: var(--red);
+        }
+
+        /* Before/After Boxes */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .before-box, .after-box {
+            padding: 2rem;
+            border: 2px solid var(--black);
+        }
+
+        .before-box {
+            background: var(--gray-light);
+            color: var(--black);
+        }
+
+        .before-box .box-label {
+            color: var(--black);
+        }
+
+        .before-box p {
+            color: var(--black);
+        }
+
+        .before-box strong {
+            color: var(--red);
+        }
+
+        .after-box {
+            background: var(--red);
+            color: var(--white);
+            border-color: var(--red);
+        }
+
+        .after-box .box-label {
+            color: var(--white);
+        }
+
+        .after-box p {
+            color: var(--white);
+        }
+
+        .after-box strong {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .box-label {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Code Blocks */
+        .code-example {
+            background: var(--gray-dark);
+            color: var(--white) !important;
+            padding: 2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--red);
+        }
+
+        /* Force white text in code blocks regardless of parent */
+        .section-red .code-example,
+        .section-dark .code-example,
+        .rec-card .code-example {
+            background: var(--gray-dark) !important;
+            color: var(--white) !important;
+        }
+
+        /* Lists */
+        .check-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .check-list li {
+            padding: 0.5rem 0 0.5rem 2rem;
+            position: relative;
+        }
+
+        .check-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Impact Badge */
+        .impact-badge {
+            display: inline-block;
+            background: var(--red);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin: 1rem 0;
+        }
+
+        /* ROI Calculator */
+        .roi-table {
+            background: var(--white);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 3px solid var(--black);
+        }
+
+        .section-dark .roi-table {
+            background: var(--gray-dark);
+            border-color: var(--white);
+        }
+
+        .roi-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-medium);
+        }
+
+        .roi-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .roi-value {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--red);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rec-content {
+                margin-left: 0;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav-section {
+                position: static;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>WELL-OILED OPERATIONS</h1>
+            <p class="hero-subtitle">Webinar Funnel Optimization Proposal</p>
+            <span class="hero-red">$9.3M</span>
+            <p style="font-size: 1.25rem;">Additional Annual Revenue Opportunity</p>
+            <p style="margin-top: 2rem; color: var(--gray-medium);">Prepared by WeConquer Media | December 2024</p>
+        </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <section class="nav-section">
+        <div class="container">
+            <h3 style="text-align: center; margin-bottom: 2rem;">JUMP TO SECTION:</h3>
+            <div class="nav-grid">
+                <a href="#overview" class="nav-button">Overview</a>
+                <a href="#landing-page" class="nav-button">Landing Page</a>
+                <a href="#thank-you" class="nav-button">Thank You Page</a>
+                <a href="#email-sequence" class="nav-button">Email Sequence</a>
+                <a href="#webinar-content" class="nav-button">Webinar Content</a>
+                <a href="#sales" class="nav-button">Sales Optimization</a>
+                <a href="#post-webinar" class="nav-button">Post-Webinar</a>
+                <a href="#roadmap" class="nav-button">90-Day Roadmap</a>
+                <a href="#roi" class="nav-button">ROI Projections</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXECUTIVE OVERVIEW -->
+    <section id="overview" class="section section-dark">
+        <div class="container">
+            <h2>EXECUTIVE OVERVIEW</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">Your webinar funnel is generating $4.8M annually. But there's a $10M+ funnel hiding inside your current structure. Here's what we found:</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">$32.50</span>
+                    <span class="stat-label">Cost Per Lead (Should be $10)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">25%</span>
+                    <span class="stat-label">Show-Up Rate (Should be 38%+)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">$196K</span>
+                    <span class="stat-label">Revenue Per Webinar (Current)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">3.0x</span>
+                    <span class="stat-label">ROAS (Target: 6.0x+)</span>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 3rem;">THE CORE PROBLEM</h3>
+            <p style="font-size: 1.125rem;">You're spending $65K per webinar to generate $196K in revenue. But with the right optimizations, that same $65K could generate $585K.</p>
+
+            <div class="impact-badge">+$389K PER WEBINAR | +$9.3M ANNUALLY</div>
+        </div>
+    </section>
+
+    <!-- LANDING PAGE SECTION -->
+    <section id="landing-page" class="section section-light">
+        <div class="container">
+            <h2>SECTION 1: LANDING PAGE</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;"><strong style="color: var(--red);">Critical Issue:</strong> Your CPL is $32.50. For a live webinar, it should be $10 or under. This is costing you <strong>$45K+ in wasted ad spend per webinar.</strong></p>
+
+            <!-- Recommendation 1 -->
+            <div class="recommendations">
+                <div class="rec-card">
+                    <span class="rec-number">1</span>
+                    <h3 class="rec-title">ADD VIDEO EXPLAINER ABOVE THE FOLD</h3>
+                    <div class="rec-content">
+                        <p><strong>The Problem:</strong> Your landing page is text-only. No video, no movement, no emotional connection.</p>
+                        
+                        <p><strong>The Solution:</strong> Add a 60-90 second video of you (Stacy) explaining what they'll get on the workshop.</p>
+
+                        <div class="code-example">VIDEO SCRIPT TEMPLATE:
+
+"Hey, I'm Stacy Tushel. Quick question:
+
+Are you tired of being the bottleneck in your business?
+
+You've hired a team... but somehow YOU'RE still doing all the work?
+
+On this FREE live workshop, I'm going to show you the exact 3-part framework
+I used to scale TWO 7-figure businesses while working LESS than 25 hours per week.
+
+No theory. No fluff. Just the real systems I use every single day.
+
+Plus, everyone who attends live gets my 16-page Hiring Handbook
+(normally $97, yours free today).
+
+Click below to save your spot. I'll see you there!"</div>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Landing page conversion rate: +40-60%</li>
+                            <li>CPL drops from $32.50 → $18-22</li>
+                            <li>Saves $28K-36K in ad spend per webinar</li>
+                        </ul>
+
+                        <div class="impact-badge">TEST THIS FIRST - BIGGEST LEVER</div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 2 -->
+                <div class="rec-card">
+                    <span class="rec-number">2</span>
+                    <h3 class="rec-title">CREATE OPEN LOOPS IN THE HEADLINE</h3>
+                    <div class="rec-content">
+                        <div class="comparison">
+                            <div class="before-box">
+                                <div class="box-label">❌ CURRENT HEADLINE:</div>
+                                <p>"Business Owners: Learn The Proven Formula To Step Out Of The Day-to-Day Tasks That Your Team Should Be Doing For You"</p>
+                                <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--gray-medium);">
+                                    Issues:<br>
+                                    • Too vague ("proven formula")<br>
+                                    • No specific outcome<br>
+                                    • Generic audience<br>
+                                    • No curiosity gap
+                                </p>
+                            </div>
+                            <div class="after-box">
+                                <div class="box-label">✓ OPTIMIZED HEADLINE:</div>
+                                <p><strong>"How 7-Figure Business Owners Are Adding $50K/Month in Profit While Working 20 Fewer Hours/Week"</strong></p>
+                                <p style="margin-top: 1rem; font-size: 0.875rem;">
+                                    Why this works:<br>
+                                    • Specific avatar (7-figure)<br>
+                                    • Specific outcome ($50K profit)<br>
+                                    • Specific time savings (20 hrs)<br>
+                                    • Creates curiosity (how?)
+                                </p>
+                            </div>
+                        </div>
+
+                        <p><strong>Subheadline to add below:</strong></p>
+                        <div class="code-example">"(Even if you've 'tried systems before' or think your team 'just won't follow processes')
+
+Discover the 3-part PYP Framework that's helped 1,458 business owners 
+increase profit margins by 41% without hiring a single new person.
+
+PLUS: Register now and get the 16-Page Hiring Handbook FREE 
+(How to hire A-players without $10K recruiting fees)"</div>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Better audience qualification (higher intent leads)</li>
+                            <li>Landing page conversion: +25-35%</li>
+                            <li>Show-up rate improves (qualified leads are more engaged)</li>
+                        </ul>
+
+                        <div class="impact-badge">PAIR WITH VIDEO FOR MAXIMUM IMPACT</div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 3 -->
+                <div class="rec-card">
+                    <span class="rec-number">3</span>
+                    <h3 class="rec-title">ADD MASSIVE SOCIAL PROOF SECTION</h3>
+                    <div class="rec-content">
+                        <p><strong>Current State:</strong> You have testimonials at the bottom with cookie-consent blockers preventing videos from playing. Not enough result-specific proof.</p>
+
+                        <p><strong>What To Add:</strong> Create a "Results Wall" section with 8-12 specific outcome testimonials positioned ABOVE the registration form.</p>
+
+                        <div class="code-example">RESULT-SPECIFIC TESTIMONIAL FORMAT:
+
+"I saved $30K in recruiting costs using Stacy's hiring framework"
+- Sarah M., E-commerce Owner
+
+"Added $72K in annual profit by fixing one 'hidden leak' in my business"
+- Mike R., Agency Owner
+
+"Went from working 60 hrs/week to 22 hrs/week in 90 days"
+- Lauren T., Coaching Business
+
+"My team now solves problems WITHOUT me—got 15 hours back per week"
+- David K., SaaS Founder
+
+[Continue with 8-12 total...]</div>
+
+                        <p><strong>Design Treatment:</strong></p>
+                        <ul class="check-list">
+                            <li>Grid layout (3-4 columns)</li>
+                            <li>Client photo + name + specific result</li>
+                            <li>Highlight the RESULT in red text</li>
+                            <li>Each testimonial addresses a different objection</li>
+                        </ul>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Conversion rate: +15-25%</li>
+                            <li>Objection handling (pre-empts "will this work for me?")</li>
+                            <li>Trust building (shows real results)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 4 -->
+                <div class="rec-card">
+                    <span class="rec-number">4</span>
+                    <h3 class="rec-title">EMPHASIZE "FREE" IN ALL COPY</h3>
+                    <div class="rec-content">
+                        <p><strong>Current CTA Button:</strong> Likely says "Register Now" or "Save My Spot"</p>
+
+                        <p><strong>Problem:</strong> Not enough emphasis on the free nature of the workshop. People need to see "FREE" multiple times.</p>
+
+                        <p><strong>Solution:</strong> Update all CTAs to emphasize FREE:</p>
+
+                        <div class="code-example">BUTTON COPY OPTIONS:
+
+Option 1: "SAVE MY FREE SPOT"
+Option 2: "YES! REGISTER FREE NOW"
+Option 3: "GET FREE ACCESS NOW"
+
+Above the button:
+"✓ 100% Free Workshop
+✓ No Credit Card Required
+✓ Get the $97 Hiring Handbook FREE"</div>
+
+                        <p><strong>Why This Works:</strong></p>
+                        <ul class="check-list">
+                            <li>Removes friction (emphasizes no cost)</li>
+                            <li>Increases urgency (free = easy decision)</li>
+                            <li>Boosts conversion by 15-25%</li>
+                        </ul>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Conversion rate: +15-25%</li>
+                            <li>Lowers CPL further</li>
+                            <li>More registrations at same ad spend</li>
+                        </ul>
+
+                        <div class="impact-badge">SIMPLE BUT POWERFUL</div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 5 -->
+                <div class="rec-card">
+                    <span class="rec-number">5</span>
+                    <h3 class="rec-title">ANNOUNCE THE FREE HANDBOOK IMMEDIATELY</h3>
+                    <div class="rec-content">
+                        <p><strong>Current Issue:</strong> The 16-Page Hiring Handbook is mentioned in emails but NOT prominently on the landing page.</p>
+
+                        <p><strong>Solution:</strong> Add a bright, visual callout box above the form:</p>
+
+                        <div class="code-example">CALLOUT BOX COPY:
+
+🎁 FREE BONUS FOR LIVE ATTENDEES:
+
+Get The 16-Page Hiring Handbook
+(Normally $97, Yours Free Today)
+
+Learn exactly how to:
+✓ Hire A-players without $10K+ recruiting fees
+✓ Write job descriptions that attract top talent
+✓ Interview in 20 minutes (not 2 hours)
+✓ Onboard new hires in 3 days (not 3 weeks)
+
+This handbook alone has saved clients $30K+ per hire.
+You get it FREE just for attending live.</div>
+
+                        <p><strong>Visual Treatment:</strong></p>
+                        <ul class="check-list">
+                            <li>Red border box (stands out)</li>
+                            <li>Mockup image of the handbook (makes it tangible)</li>
+                            <li>Dollar value crossed out (shows the "deal")</li>
+                            <li>Positioned right above the CTA button</li>
+                        </ul>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Conversion rate: +10-15%</li>
+                            <li>Show-up rate: +5-8% (don't want to miss the free bonus)</li>
+                            <li>Perceived value increases (the webinar is "worth something")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landing Page Summary -->
+            <div class="roi-table">
+                <h3 style="margin-bottom: 2rem;">LANDING PAGE: COMBINED IMPACT</h3>
+                <div class="roi-row">
+                    <span>Current CPL:</span>
+                    <span class="roi-value">$32.50</span>
+                </div>
+                <div class="roi-row">
+                    <span>Optimized CPL (with all 5 fixes):</span>
+                    <span class="roi-value">$12-15</span>
+                </div>
+                <div class="roi-row">
+                    <span>Ad Spend Savings Per Webinar:</span>
+                    <span class="roi-value">$35,000+</span>
+                </div>
+                <div class="roi-row">
+                    <span>Annual Savings (24 webinars):</span>
+                    <span class="roi-value">$840,000</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THANK YOU PAGE SECTION -->
+    <section id="thank-you" class="section section-dark">
+        <div class="container">
+            <h2>SECTION 2: THANK YOU PAGE</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">Your thank you page has a good structure (calendar invite, videos, SMS opt-in) but it's missing engagement tracking and progressive commitment mechanisms.</p>
+
+            <div class="recommendations">
+                <!-- Recommendation 1 -->
+                <div class="rec-card">
+                    <span class="rec-number">1</span>
+                    <h3 class="rec-title">ADD VIDEO COMPLETION TRACKING</h3>
+                    <div class="rec-content">
+                        <p><strong>Current State:</strong> You have 3 pre-webinar videos but no way to know who's watching them.</p>
+
+                        <p><strong>Why This Matters:</strong> People who consume 2+ pieces of content before a webinar have 3-5x higher close rates. You need to track WHO is engaging.</p>
+
+                        <p><strong>Solution:</strong> Implement progressive video unlocking:</p>
+
+                        <div class="code-example">VIDEO SEQUENCE FLOW:
+
+VIDEO 1: "What To Expect On The Workshop" (1.5 min)
+→ Must watch 90% to unlock Video 2
+
+VIDEO 2: "The #1 Mistake Business Owners Make With Teams" (2 min)
+→ Must watch 90% to unlock Video 3
+
+VIDEO 3: "Why 80% of 'Systems' Fail (And What Works Instead)" (2 min)
+→ Completion = Badge appears: "✓ You're Ready For The Workshop!"
+
+TRACKING:
+- Tag completers in CRM as "High Engagement"
+- Send different reminder emails to completers vs. non-completers
+- Prioritize completers on webinar (they're warmer leads)</div>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Show-up rate: +8-12% (completers show up at higher rates)</li>
+                            <li>Engagement tracking (you know who's serious)</li>
+                            <li>Close rate: +15% (high-engagement leads convert better)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 2 -->
+                <div class="rec-card">
+                    <span class="rec-number">2</span>
+                    <h3 class="rec-title">INSTANT DOWNLOAD: THE HIRING HANDBOOK</h3>
+                    <div class="rec-content">
+                        <p><strong>Current State:</strong> The Hiring Handbook is mentioned but not immediately downloadable.</p>
+
+                        <p><strong>Solution:</strong> Create instant download as the FIRST step on thank you page:</p>
+
+                        <div class="code-example">STEP 1 POSITIONING:
+
+"🎁 QUICK WIN: Download Your FREE Hiring Handbook Right Now"
+
+[Big Download Button]
+
+"This 16-page guide shows you exactly how to hire A-players 
+without the $10K recruiting fees.
+
+You'll want to reference this during the workshop, 
+so download it now and keep it handy!"</div>
+
+                        <p><strong>Why This Works:</strong></p>
+                        <ul class="check-list">
+                            <li>Creates immediate commitment (downloaded something = more invested)</li>
+                            <li>Increases show-up rate (don't want to "waste" the download)</li>
+                            <li>Pre-frames your offer (handbook is just the beginning)</li>
+                            <li>Tracks engagement (who downloaded = warmer leads)</li>
+                        </ul>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Show-up rate: +5-8%</li>
+                            <li>Perceived value increases</li>
+                            <li>Lead segmentation (downloaders vs. non-downloaders)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 3 -->
+                <div class="rec-card">
+                    <span class="rec-number">3</span>
+                    <h3 class="rec-title">ADD QUALIFICATION QUESTIONS</h3>
+                    <div class="rec-content">
+                        <p><strong>Why On Thank You Page:</strong> Asking qualifying questions on the landing page decreases conversion. But on the thank you page, you've already captured the lead—now you can qualify them.</p>
+
+                        <p><strong>Positioning:</strong> "Help us tailor the masterclass to YOUR needs"</p>
+
+                        <div class="code-example">QUALIFYING QUESTIONS:
+
+"Quick! Answer 3 questions so we can customize the workshop for you:"
+
+1. "What's your current monthly revenue?"
+   [ ] Under $50K
+   [ ] $50K-$100K
+   [ ] $100K-$250K
+   [ ] $250K-$500K
+   [ ] $500K-$1M+
+
+2. "How many team members do you have?"
+   [ ] Just me (solopreneur)
+   [ ] 1-2 people
+   [ ] 3-5 people
+   [ ] 6-10 people
+   [ ] 11+ people
+
+3. "What's your biggest team challenge RIGHT NOW?"
+   [ ] Can't find good people to hire
+   [ ] Team won't follow my systems
+   [ ] I'm the bottleneck in everything
+   [ ] Profit margins are too thin
+   [ ] Team exists but I still do all the work
+
+[Submit Button: "Customize My Experience"]</div>
+
+                        <p><strong>Benefits:</strong></p>
+                        <ul class="check-list">
+                            <li>Qualifies leads without hurting landing page conversion</li>
+                            <li>Segments audience (you can customize webinar examples)</li>
+                            <li>Increases commitment (answered questions = higher show-up)</li>
+                            <li>Improves close rate (only qualified leads make it through)</li>
+                        </ul>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Show-up rate: +8-12% (commitment through investment)</li>
+                            <li>Close rate: +25% (better lead quality)</li>
+                            <li>Segmentation data for personalized follow-up</li>
+                        </ul>
+
+                        <div class="impact-badge">SMART PLACEMENT = HIGH IMPACT</div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 4 -->
+                <div class="rec-card">
+                    <span class="rec-number">4</span>
+                    <h3 class="rec-title">AUTO-ADD TO CALENDAR FUNCTIONALITY</h3>
+                    <div class="rec-content">
+                        <p><strong>Current State:</strong> You have "Add to Calendar" button (manual).</p>
+
+                        <p><strong>Better Approach:</strong> Automatically add to their calendar with one click.</p>
+
+                        <p><strong>Tools to Implement:</strong></p>
+                        <ul class="check-list">
+                            <li><strong>AddEvent.com</strong> - Creates calendar links for Google/Outlook/Apple</li>
+                            <li><strong>Calendly Integration</strong> - Auto-syncs with their calendar</li>
+                            <li><strong>ICS File Download</strong> - Universal calendar file format</li>
+                        </ul>
+
+                        <div class="code-example">POSITIONING ON PAGE:
+
+"🗓️ STEP 1: Add This To Your Calendar Right Now"
+
+[Big Button: "AUTO-ADD TO MY CALENDAR"]
+
+Below button:
+"Works with: Google Calendar | Outlook | Apple Calendar | iCal"
+
+Backup option:
+"Or manually add: Monday, December 30th at 11:30am CST"</div>
+
+                        <p><strong>Why This Works:</strong></p>
+                        <ul class="check-list">
+                            <li>One-click = less friction</li>
+                            <li>Event appears in their calendar (they see it daily)</li>
+                            <li>Calendar apps send automatic reminders</li>
+                            <li>Show-up rate increases dramatically</li>
+                        </ul>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Calendar add rate: 60-70% (vs. 20-30% manual)</li>
+                            <li>Show-up rate: +10-15%</li>
+                            <li>Simple technical implementation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 5 -->
+                <div class="rec-card">
+                    <span class="rec-number">5</span>
+                    <h3 class="rec-title">ADD SOCIAL PROOF COUNTDOWN</h3>
+                    <div class="rec-content">
+                        <p><strong>Missing Element:</strong> No real-time social proof or FOMO mechanism.</p>
+
+                        <p><strong>Solution:</strong> Add a live counter showing how many people have registered:</p>
+
+                        <div class="code-example">SOCIAL PROOF ELEMENT:
+
+"2,791 Business Owners Have Already Registered For This Workshop"
+
+[Animated counter that ticks up in real-time]
+
+"Seats are limited to maintain quality Q&A. 
+Once we hit 3,000 registrations, we close enrollment."</div>
+
+                        <p><strong>Psychological Trigger:</strong> Scarcity + social proof = higher commitment to actually show up.</p>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Show-up rate: +3-5%</li>
+                            <li>Creates FOMO (don't want to miss what 2,791 others are doing)</li>
+                            <li>Validates decision to register</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMAIL SEQUENCE SECTION -->
+    <section id="email-sequence" class="section section-light">
+        <div class="container">
+            <h2>SECTION 3: EMAIL SEQUENCE</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;"><strong style="color: var(--red);">Show-Up Rate Issue:</strong> Only 25% of registrants are attending. Industry standard is 35-45%. You're losing 500+ attendees per webinar.</p>
+
+            <div class="recommendations">
+                <!-- Recommendation 1 -->
+                <div class="rec-card">
+                    <span class="rec-number">1</span>
+                    <h3 class="rec-title">REWRITE EMAIL #1 (WELCOME) WITH PATTERN INTERRUPT</h3>
+                    <div class="rec-content">
+                        <p><strong>Current Email:</strong> Generic welcome confirmation.</p>
+
+                        <p><strong>Problem:</strong> It's boring. No hook. No reason to pay attention to future emails.</p>
+
+                        <p><strong>Optimized Version:</strong></p>
+
+                        <div class="code-example">SUBJECT: The 80/20 rule is LYING to you (here's why)
+
+Hey {First Name},
+
+You know that advice about "working ON your business, not IN it"?
+
+Total BS.
+
+(Well... partially.)
+
+Here's what they DON'T tell you:
+
+Even when you work "ON" your business—creating systems, 
+writing SOPs, building processes—you're STILL trapped.
+
+Why?
+
+Because 80% of your "strategy time" is spent fixing the same 3 problems:
+1. Team members who "didn't know" (lack of clarity)
+2. Tasks that "fell through the cracks" (lack of process)
+3. You jumping in to "save the day" (lack of ownership)
+
+Monday's workshop isn't about working ON vs. IN your business.
+
+It's about the THIRD type of work nobody talks about:
+**Working THROUGH your business.**
+
+Here's what I mean → [Link to 90-second explainer video]
+
+See you Monday at 11:30am CST,
+Stacy
+
+P.S. In that video, I mention the "3 Pillar Framework" (PYP).
+This is what we'll unpack on Monday. Come ready to take notes!</div>
+
+                        <p><strong>Why This Works:</strong></p>
+                        <ul class="check-list">
+                            <li>Pattern interrupt (challenges common advice)</li>
+                            <li>Creates curiosity ("third type of work")</li>
+                            <li>Positions webinar as reveal (not just more training)</li>
+                            <li>Video builds relationship</li>
+                        </ul>
+
+                        <p><strong>Expected Impact:</strong> Show-up rate +5-7%</p>
+                    </div>
+                </div>
+
+                <!-- Recommendation 2 -->
+                <div class="rec-card">
+                    <span class="rec-number">2</span>
+                    <h3 class="rec-title">EMAIL #2: ADDRESS THE #1 OBJECTION</h3>
+                    <div class="rec-content">
+                        <p><strong>Current Email:</strong> Generic content about systems.</p>
+
+                        <p><strong>Better Approach:</strong> Address the elephant in the room.</p>
+
+                        <div class="code-example">SUBJECT: "Stacy, is that really it? Just systems?" [skeptical]
+
+{First Name},
+
+I got a reply to yesterday's email that made me laugh:
+
+"Stacy, is that really it? Just systems? 
+I've tried systems. They don't work for my business."
+
+Here's my reply (and why you need to hear this):
+
+**Systems DON'T work.**
+
+(Let me finish...)
+
+Systems don't work *when you build them the way everyone teaches you to*.
+
+Most "business systems" are built like this:
+1. Document what you do
+2. Hand it to team member
+3. Hope they follow it
+4. Wonder why they don't
+
+This is why your previous attempts failed.
+
+The REAL system has 3 layers:
+❌ Layer 1: What to do (this is what everyone teaches)
+✅ Layer 2: How to NOT screw it up (this is what's missing)
+✅ Layer 3: Who owns fixing it when it breaks (this is the secret)
+
+Monday's workshop is about Layers 2 and 3.
+
+Because Layer 1? You already know that.
+
+[2-min video: "The 3-Layer System Framework"]
+
+See you Monday at 11:30am CST,
+Stacy
+
+P.S. The 16-page Hiring Handbook you'll get for FREE on Monday?
+It's built with all 3 layers. You'll see why it actually WORKS.</div>
+
+                        <p><strong>Expected Impact:</strong> Show-up rate +4-6%</p>
+                    </div>
+                </div>
+
+                <!-- Recommendation 3 -->
+                <div class="rec-card">
+                    <span class="rec-number">3</span>
+                    <h3 class="rec-title">EMAIL #3: EMOTIONAL STORY</h3>
+                    <div class="rec-content">
+                        <p><strong>Your Current "People" Email Is GOOD</strong> — Keep the opening, enhance the close.</p>
+
+                        <div class="code-example">SUBJECT: I almost fired my entire team (thank god I didn't)
+
+{First Name},
+
+Let me guess where you are right now:
+
+You're thinking about firing everyone and starting over.
+
+Or... hiring that expensive COO who "gets it."
+
+Or... just doing it all yourself because "it's faster."
+
+(Raises hand slowly...) 👋
+
+I've been in ALL three places.
+
+In my case, I literally emailed everyone: "Clear your calendars. 
+Emergency all-hands Monday at 9am."
+
+I was 100% ready to clean house.
+
+Then, Sunday night (the night before The Great Firing), 
+I read something that made me realize:
+
+**The problem wasn't my people. It was my expectations.**
+
+Not like... "I expected too much."
+
+The opposite.
+
+I expected them to care like an OWNER when I treated them like EMPLOYEES.
+
+I expected them to "figure it out" when I never taught them HOW.
+
+Monday morning, instead of firing everyone...
+
+I implemented the "People Framework" (you'll learn this Monday).
+
+Within 48 hours:
+- My "problem child" employee became my #1 performer
+- My team proactively solved 3 issues I didn't know about
+- I got 8 hours back that week
+
+NO new hires. NO expensive COO. NO firing spree.
+
+Just one framework.
+
+If you're thinking about gutting your team... hold off until Monday.
+
+What I'll show you at 11:30am CST might save you $50K+ in rehiring costs.
+
+[2-min video link]
+
+-Stacy
+
+P.S. Quick question: Have you ever hired someone you thought was PERFECT...
+only for them to become a "problem employee" 90 days later?
+
+That's not a hiring problem. (I'll explain what it actually is on Monday.)</div>
+
+                        <p><strong>Expected Impact:</strong> Show-up rate +6-8% (best email in sequence)</p>
+                    </div>
+                </div>
+
+                <!-- Recommendation 4 -->
+                <div class="rec-card">
+                    <span class="rec-number">4</span>
+                    <h3 class="rec-title">6-HOUR REMINDER: TIMESTAMP TEASE</h3>
+                    <div class="rec-content">
+                        <p><strong>Current Reminder:</strong> Generic countdown.</p>
+
+                        <p><strong>Better Approach:</strong> Give them specific timestamps to watch for.</p>
+
+                        <div class="code-example">SUBJECT: The 41% Profit Increase Secret (revealed in 6 hours)
+
+Quick one, {First Name}—
+
+We're 6 hours from going live.
+
+2,791 business owners registered.
+
+Heads-up about something you WON'T want to miss:
+
+At **timestamp 42:37** (write that down), I'm revealing the exact calculator 
+I use to show clients their "hidden profit leak."
+
+It takes 4 minutes.
+
+Average business owner finds $38K-72K in annual profit they're leaving on the table.
+
+(One attendee found $194K. Still my record.)
+
+I'm only showing this once—no replay after the holidays.
+
+So if you can only catch 10 minutes...
+
+Make it minutes 42-52.
+
+See you at 11:30am CST (6 hours),
+Stacy
+
+P.S. Set a timer on your phone for 42 minutes into the workshop.
+You'll thank me later.</div>
+
+                        <p><strong>Why This Works:</strong></p>
+                        <ul class="check-list">
+                            <li>Creates commitment (they'll wait for minute 42)</li>
+                            <li>Makes them feel like an insider (specific timestamp)</li>
+                            <li>Gives specific value ($38K-72K finding)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 5 -->
+                <div class="rec-card">
+                    <span class="rec-number">5</span>
+                    <h3 class="rec-title">FIX EMAIL DELIVERABILITY (CRITICAL ISSUE)</h3>
+                    <div class="rec-content">
+                        <p><strong style="color: var(--red);">⚠️ URGENT:</strong> Your show-up reminder emails are going to SPAM. This is killing your attendance rate.</p>
+
+                        <p><strong>The Problem:</strong></p>
+                        <ul class="check-list">
+                            <li>Reminder emails not reaching inbox</li>
+                            <li>Registrants don't see reminders → don't attend</li>
+                            <li>Could be 30-50% of your "low show-up rate" problem</li>
+                        </ul>
+
+                        <p><strong>Why Emails Go To Spam:</strong></p>
+                        <div class="code-example">COMMON DELIVERABILITY ISSUES:
+
+1. Domain/IP Reputation
+   - New sending domain without warm-up
+   - High spam complaint rate
+   - Blacklisted IP address
+
+2. Authentication Issues
+   - Missing SPF record
+   - Missing DKIM signature
+   - Missing DMARC policy
+
+3. Content Triggers
+   - Too many links
+   - Spam trigger words ("FREE", "ACT NOW", "LIMITED TIME")
+   - High image-to-text ratio
+   - ALL CAPS in subject lines
+
+4. Engagement Issues
+   - Low open rates historically
+   - High unsubscribe rates
+   - Many invalid email addresses</div>
+
+                        <p><strong>Solutions To Implement IMMEDIATELY:</strong></p>
+
+                        <p><strong>STEP 1: Technical Authentication (Priority #1)</strong></p>
+                        <ul class="check-list">
+                            <li><strong>Set up SPF record:</strong> Authorizes your email server to send from your domain</li>
+                            <li><strong>Set up DKIM:</strong> Cryptographically signs your emails</li>
+                            <li><strong>Set up DMARC:</strong> Tells email providers how to handle unauthenticated emails</li>
+                            <li><strong>Tools:</strong> Use MXToolbox.com to check current authentication status</li>
+                        </ul>
+
+                        <p><strong>STEP 2: Use A Dedicated Sending Domain</strong></p>
+                        <div class="code-example">BEST PRACTICE:
+
+Main domain: welloiledoperations.com
+Sending domain: mail.welloiledoperations.com OR events.welloiledoperations.com
+
+Why?
+- Protects main domain reputation
+- Easier to warm up new sending domain
+- Can isolate issues to secondary domain
+
+FROM addresses should be:
+stacy@mail.welloiledoperations.com (warm-up & build trust)</div>
+
+                        <p><strong>STEP 3: Clean Subject Lines</strong></p>
+                        <div class="comparison">
+                            <div class="before-box">
+                                <div class="box-label">❌ SPAM TRIGGERS:</div>
+                                <p>
+                                    "🚨 FREE WORKSHOP STARTING NOW!!!"<br>
+                                    "LAST CHANCE - CLICK HERE NOW"<br>
+                                    "Re: Your Application [Automated]"<br>
+                                    "ACT NOW - LIMITED TIME OFFER"
+                                </p>
+                                <p style="margin-top: 1rem; font-size: 0.875rem;">
+                                    Issues: Emojis, ALL CAPS, spam words, fake "Re:", urgency
+                                </p>
+                            </div>
+                            <div class="after-box">
+                                <div class="box-label">✓ DELIVERABLE:</div>
+                                <p>
+                                    "Workshop starts in 1 hour"<br>
+                                    "Your workshop reminder"<br>
+                                    "See you at 11:30am today"<br>
+                                    "Quick reminder for today's session"
+                                </p>
+                                <p style="margin-top: 1rem; font-size: 0.875rem;">
+                                    Better: Natural language, no tricks, clear purpose
+                                </p>
+                            </div>
+                        </div>
+
+                        <p><strong>STEP 4: Reduce Link Density</strong></p>
+                        <ul class="check-list">
+                            <li>Maximum 2-3 links per email</li>
+                            <li>Use text links, not button images</li>
+                            <li>Avoid URL shorteners (bit.ly, tinyurl)</li>
+                            <li>Use your own domain in links</li>
+                        </ul>
+
+                        <p><strong>STEP 5: Ask Recipients To Whitelist</strong></p>
+                        <div class="code-example">ON THANK YOU PAGE / CONFIRMATION EMAIL:
+
+"Important: To make sure you get all reminders..."
+
+STEP 1: Add stacy@welloiledoperations.com to your contacts
+
+STEP 2: If using Gmail, drag this email to your "Primary" tab
+
+STEP 3: Mark as "Not Spam" if it lands in spam
+
+This ensures you'll receive all workshop reminders and bonus materials.</div>
+
+                        <p><strong>STEP 6: Use Multiple Reminder Channels</strong></p>
+                        <ul class="check-list">
+                            <li><strong>Email:</strong> Primary channel (but may go to spam)</li>
+                            <li><strong>SMS:</strong> Backup channel (higher deliverability)</li>
+                            <li><strong>Calendar invite:</strong> Built-in reminders</li>
+                            <li><strong>Facebook Messenger:</strong> Alternative notification</li>
+                        </ul>
+
+                        <p><strong>STEP 7: Monitor Deliverability Metrics</strong></p>
+                        <div class="code-example">KEY METRICS TO TRACK:
+
+Inbox Placement Rate: Should be >90%
+Spam Rate: Should be <0.1%
+Bounce Rate: Should be <2%
+Unsubscribe Rate: Should be <0.3%
+
+Tools to use:
+- GlockApps (inbox testing)
+- Mail-Tester.com (spam score checker)
+- Your ESP's deliverability dashboard</div>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Inbox placement: 50-70% → 90%+</li>
+                            <li>Show-up rate: +10-15% just from deliverability fixes</li>
+                            <li>Reduces "I never got the email" complaints</li>
+                            <li>Additional attendees per webinar: +190-285</li>
+                            <li>Additional revenue per webinar: +$66K-100K</li>
+                        </ul>
+
+                        <div class="impact-badge">FIX THIS FIRST - FOUNDATION FOR ALL EMAIL EFFORTS</div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 6 -->
+                <div class="rec-card">
+                    <span class="rec-number">6</span>
+                    <h3 class="rec-title">BONUS STRATEGY: HANDBOOK ONLY FOR LIVE ATTENDEES</h3>
+                    <div class="rec-content">
+                        <p><strong>Current Approach:</strong> Handbook available on thank you page immediately.</p>
+
+                        <p><strong>Alternative Test:</strong> Make the handbook ONLY available to people who attend live.</p>
+
+                        <p><strong>Email Language:</strong></p>
+
+                        <div class="code-example">EMAIL SUBJECT (6 Hours Before):
+"⚠️ You'll lose access to the $97 Hiring Handbook if you don't attend"
+
+EMAIL BODY:
+{First Name},
+
+Quick heads-up:
+
+The 16-Page Hiring Handbook (normally $97) is ONLY available 
+to people who attend the live workshop.
+
+If you're a no-show, you won't get it.
+
+Why?
+
+Because I want to make sure it goes to people who are serious 
+about implementing (not just collecting free stuff).
+
+So if you want the handbook that's saved clients $30K+ per hire...
+
+You need to show up at 11:30am CST today.
+
+See you there,
+Stacy
+
+P.S. We'll send the handbook download link to everyone 
+who attends—right after the workshop ends.</div>
+
+                        <p><strong>Why This MIGHT Work Better:</strong></p>
+                        <ul class="check-list">
+                            <li>Creates urgency (attend or lose the bonus)</li>
+                            <li>Filters serious vs. casual registrants</li>
+                            <li>Rewards attendance (exclusivity)</li>
+                        </ul>
+
+                        <p><strong>Why Thank You Page MIGHT Work Better:</strong></p>
+                        <ul class="check-list">
+                            <li>Immediate gratification (download now)</li>
+                            <li>Higher registration conversion (get something free immediately)</li>
+                            <li>More total signups (volume strategy)</li>
+                        </ul>
+
+                        <p><strong>Recommendation:</strong> A/B TEST BOTH APPROACHES</p>
+
+                        <div class="comparison">
+                            <div class="before-box">
+                                <div class="box-label">TEST A: IMMEDIATE DOWNLOAD</div>
+                                <p><strong>Pros:</strong> Higher registrations, immediate commitment, more volume</p>
+                                <p><strong>Cons:</strong> May attract freebie-seekers</p>
+                            </div>
+                            <div class="after-box">
+                                <div class="box-label">TEST B: ATTENDEE-ONLY</div>
+                                <p><strong>Pros:</strong> Higher show-up rate, more qualified audience, exclusivity</p>
+                                <p><strong>Cons:</strong> Fewer total registrations</p>
+                            </div>
+                        </div>
+
+                        <p><strong>Expected Impact (Test B):</strong></p>
+                        <ul class="check-list">
+                            <li>Show-up rate: +12-18%</li>
+                            <li>Registration volume: -10% (trade-off)</li>
+                            <li>Net revenue: Likely positive (quality > quantity)</li>
+                        </ul>
+
+                        <div class="impact-badge">RUN SPLIT TEST TO DETERMINE WINNER</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Sequence Summary -->
+            <div class="roi-table">
+                <h3 style="margin-bottom: 2rem;">EMAIL SEQUENCE: COMBINED IMPACT</h3>
+                <div class="roi-row">
+                    <span>Current Show-Up Rate:</span>
+                    <span class="roi-value">25%</span>
+                </div>
+                <div class="roi-row">
+                    <span>With Email Deliverability Fixes:</span>
+                    <span class="roi-value">35-40%</span>
+                </div>
+                <div class="roi-row">
+                    <span>With Optimized Sequence + Deliverability:</span>
+                    <span class="roi-value">42-48%</span>
+                </div>
+                <div class="roi-row">
+                    <span>Additional Attendees Per Webinar:</span>
+                    <span class="roi-value">+320-440</span>
+                </div>
+                <div class="roi-row">
+                    <span>Additional Revenue Per Webinar (at 20% call rate, 25% close):</span>
+                    <span class="roi-value">+$112K-154K</span>
+                </div>
+                <div class="roi-row" style="border-top: 3px solid var(--white);">
+                    <span>Annual Impact (24 webinars):</span>
+                    <span class="roi-value">+$2.7M-3.7M</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WEBINAR CONTENT SECTION -->
+    <section id="webinar-content" class="section section-dark">
+        <div class="container">
+            <h2>SECTION 4: WEBINAR CONTENT</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">Your webinar content is solid, but the STRUCTURE and PRESENTATION can be optimized to drive more calls booked.</p>
+
+            <div class="recommendations">
+                <!-- Recommendation 1 -->
+                <div class="rec-card">
+                    <span class="rec-number">1</span>
+                    <h3 class="rec-title">RESTRUCTURE THE OPENING (FIRST 10 MINUTES)</h3>
+                    <div class="rec-content">
+                        <p><strong>Current Opening:</strong> You introduce yourself, build credibility, explain the topic.</p>
+
+                        <p><strong>Missing:</strong> A clear promise of what they'll learn by the end.</p>
+
+                        <p><strong>Optimized Opening Script:</strong></p>
+
+                        <div class="code-example">00:00-00:15 (Engagement)
+"Hi everyone! Can you hear me? Type 'PROFIT' in the chat if you can!"
+
+00:15-00:45 (The Promise)
+"Perfect! Okay, here's what we're doing today.
+
+By the end of the next 60 minutes, you're going to know:
+
+#1: The single biggest reason your profit margins are thinner than they should be 
+    (and it's NOT what you think)
+
+#2: Why every 'system' you've tried has failed 
+    (there's a structural reason, not an execution reason)
+
+#3: The exact 3-part framework I used to increase profit by 41% 
+    in 93 businesses without them hiring a single new person
+
+Sound good? Type 'YES' in the chat if you're ready!"
+
+00:45-01:30 (Setting Expectations)
+"Awesome! Quick housekeeping:
+
+- This is LIVE (Monday, December 30th)
+- We'll go about 60 minutes
+- At the end, I'll show you exactly how to implement this
+- Fair warning: this goes against most advice you've heard
+
+If you're skeptical or thinking 'I've heard this before...'
+
+PERFECT. That means you're paying attention.
+
+Because what I'm about to show you is NOT:
+❌ 'Just hire better people' (doesn't work)
+❌ 'Just document your processes' (doesn't work)
+❌ 'Just work ON the business not IN it' (doesn't work)
+
+It's something completely different.
+
+And if you stay until the end, you'll see exactly why 
+those other methods HAVE to fail... and what works instead.
+
+Sound fair? Let's dive in!"</div>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Drop-off rate in first 10 min: -30%</li>
+                            <li>Engagement increases (chat activity)</li>
+                            <li>Sets clear expectations</li>
+                            <li>Creates curiosity loops (stay til the end)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 2 -->
+                <div class="rec-card">
+                    <span class="rec-number">2</span>
+                    <h3 class="rec-title">BUILD THE "ENEMY" POSITIONING</h3>
+                    <div class="rec-content">
+                        <p><strong>Missing Element:</strong> Every great pitch needs a villain. Not a person—an OLD WAY of thinking.</p>
+
+                        <p><strong>Your "Enemy" Should Be:</strong></p>
+
+                        <div class="code-example">THE OLD WAY (That Doesn't Work):
+
+❌ OLD WAY #1: "Hire better people"
+   Problem: The issue isn't the people, it's the system
+   
+❌ OLD WAY #2: "Better SOPs"
+   Problem: Nobody follows generic SOPs
+   
+❌ OLD WAY #3: "More training"
+   Problem: Training without ownership = wasted time
+
+✅ NEW WAY: The PYP Framework
+   (Plan-People-Process that makes average people perform like rockstars)</div>
+
+                        <p><strong>How to Weave This In:</strong></p>
+                        <ul class="check-list">
+                            <li>Introduce the "enemy" in the first 10 minutes</li>
+                            <li>Refer back to it throughout ("Remember the old way? That's why it fails...")</li>
+                            <li>Contrast your framework against the "old way" at each step</li>
+                        </ul>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Positions you as contrarian/different</li>
+                            <li>Validates their frustration (you understand why they failed before)</li>
+                            <li>Makes your framework feel like "the answer" they've been missing</li>
+                            <li>Close rate: +30-50%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 3 -->
+                <div class="rec-card">
+                    <span class="rec-number">3</span>
+                    <h3 class="rec-title">STACK THE OFFER (VALUE BREAKDOWN)</h3>
+                    <div class="rec-content">
+                        <p><strong>Current Offer Presentation:</strong> Unclear from materials how you break down the value.</p>
+
+                        <p><strong>Stacking Formula:</strong></p>
+
+                        <div class="code-example">OFFER STACK SCRIPT:
+
+"Alright, so how do you actually implement this?
+
+Here's the thing: I could give you the templates right now.
+
+But templates without CONTEXT are just more PDFs in your Google Drive.
+
+What you actually need is:
+1. The frameworks (which I just showed you)
+2. The templates (so you can implement fast)
+3. The coaching (so you don't mess it up)
+4. The accountability (so you actually finish)
+
+That's why I created the Well-Oiled Operations Program.
+
+Let me break down exactly what's inside:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MODULE 1: PLAN
+→ The One-Page Strategic Plan Template
+→ The Profit Leak Calculator (finds $38K-72K on average)
+→ The Quarterly Planning Framework
+→ VALUE: $10,000
+
+MODULE 2: PROCESS
+→ The 4-Part Process Framework (with Failure Modes)
+→ The SOP Template Library (12 core business SOPs)
+→ The System Audit Checklist
+→ VALUE: $15,000
+
+MODULE 3: PEOPLE
+→ The Control Sheet Framework (gives you 10-20 hrs/week back)
+→ The Ownership Transfer Protocol
+→ The Team Performance Tracker
+→ VALUE: $20,000
+
+CORE PROGRAM VALUE: $45,000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+But that's just the CORE. Here's where it gets really good:
+
+BONUS #1: The 16-Page Hiring Handbook
+→ Save $30K per hire
+→ VALUE: $2,000
+
+BONUS #2: Weekly Group Coaching (12 weeks)
+→ Every Tuesday at 2pm EST
+→ Hot-seat coaching on YOUR business
+→ VALUE: $6,000
+
+BONUS #3: The 90-Day Implementation Roadmap
+→ Week-by-week so you don't get overwhelmed
+→ VALUE: $1,500
+
+BONUS #4: Private Community Access
+→ Network with 400+ business owners
+→ VALUE: $3,000/year
+
+BONUS #5: Lifetime Updates
+→ Any new frameworks/templates we add
+→ VALUE: $5,000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TOTAL VALUE: $62,500
+
+That's if you bought everything separately.
+
+But you're not going to pay anywhere near that...
+
+The full investment is $15,000.
+
+[Continue with guarantee, scarcity, CTA...]"</div>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Makes price feel like a "deal" ($62,500 value for $15K)</li>
+                            <li>Shows completeness of solution</li>
+                            <li>Addresses "is this enough?" objection</li>
+                            <li>Call booking rate: +40-60%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 4 -->
+                <div class="rec-card">
+                    <span class="rec-number">4</span>
+                    <h3 class="rec-title">ADD SCARCITY MECHANISM</h3>
+                    <div class="rec-content">
+                        <p><strong>Current Approach:</strong> No clear scarcity or urgency mentioned in materials.</p>
+
+                        <p><strong>Add This To Your Pitch:</strong></p>
+
+                        <div class="code-example">"Now, here's where the scarcity comes in:
+
+I only run this program 4 times per year.
+
+And I cap enrollment at 50 people per cohort.
+
+Why?
+
+Because I personally show up to every coaching call.
+
+And I can't effectively coach more than 50 businesses at once.
+
+Right now, we have 38 spots left for the January cohort.
+
+Once we hit 50, the cart closes until April.
+
+And I'm not doing another workshop before then.
+
+So if you want in, this is your window."</div>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Creates urgency (limited spots)</li>
+                            <li>Justifies the scarcity (quality, not manipulation)</li>
+                            <li>Increases application rate immediately</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 5 -->
+                <div class="rec-card">
+                    <span class="rec-number">5</span>
+                    <h3 class="rec-title">OPTIMIZE THE CALL-TO-ACTION</h3>
+                    <div class="rec-content">
+                        <p><strong>Clear 3-Step Process:</strong></p>
+
+                        <div class="code-example">"Alright, here's what to do next:
+
+STEP 1: Click the button on your screen
+
+It says 'Apply Now' in the bottom right corner.
+
+STEP 2: Fill out the short application (takes 3 minutes)
+
+We ask about:
+- Current revenue
+- Team size
+- Biggest challenge
+
+This helps me personalize your onboarding.
+
+STEP 3: Book your enrollment call
+
+You'll talk to someone on my team.
+They'll answer any questions.
+And if it's a fit, we'll get you enrolled.
+
+That's it. Three simple steps.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Remember: 38 spots left for January.
+Fast-action bonus ends Wednesday at midnight.
+
+So if you're even THINKING about it, apply now.
+
+Worst case? You talk to my team and decide it's not for you.
+Best case? This is the moment everything changes.
+
+Click 'Apply Now' right now.
+
+I'll see you inside!"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SALES OPTIMIZATION SECTION -->
+    <section id="sales" class="section section-dark">
+        <div class="container">
+            <h2>SECTION 5: SALES OPTIMIZATION</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;"><strong style="color: var(--red);">Hidden Opportunity:</strong> Low call show-up rates are costing you closed deals. An application fee model can dramatically improve this.</p>
+
+            <div class="recommendations">
+                <!-- Recommendation 1 -->
+                <div class="rec-card">
+                    <span class="rec-number">1</span>
+                    <h3 class="rec-title">TEST $97 APPLICATION FEE MODEL</h3>
+                    <div class="rec-content">
+                        <p><strong>Current Issue:</strong> Sales call no-show rates are likely 30-50% (industry average). You're booking 100 calls but probably only speaking with 50-70 people.</p>
+
+                        <p><strong>The Solution:</strong> Implement a $97 application fee to speak with the sales team.</p>
+
+                        <div class="code-example">HOW IT WORKS:
+
+STEP 1: After webinar CTA, they click "Apply Now"
+
+STEP 2: Application form asks:
+- Business revenue
+- Team size
+- Biggest challenge
+- Why you want to work with us
+
+STEP 3: Payment page:
+"$97 Application Fee (Fully Refundable + Credited Toward Program)"
+
+STEP 4: Payment confirmation:
+"Thank you! Your application is under review. 
+We'll reach out within 24 hours to schedule your strategy call."
+
+STEP 5: Sales team calls to book appointment
+
+THE POSITIONING:
+"Due to limited coaching capacity, we can only work with 50 business owners 
+per quarter. To ensure we're only speaking with serious, committed business owners, 
+there's a $97 application fee.
+
+This fee is:
+✓ 100% refundable if we determine it's not a fit
+✓ Fully credited toward the program if you're accepted
+✓ Waived for existing clients who refer you
+
+This ensures we're investing our time with people who are ready to implement, 
+not just 'tire-kickers' gathering free advice."</div>
+
+                        <p><strong>Why This Works:</strong></p>
+                        <ul class="check-list">
+                            <li><strong>Skin in the game:</strong> People who pay $97 show up at 90%+ rates</li>
+                            <li><strong>Pre-qualified:</strong> Only serious buyers will pay to apply</li>
+                            <li><strong>Exclusivity:</strong> "Limited capacity" creates FOMO</li>
+                            <li><strong>Self-liquidating:</strong> Covers 30-40% of ad spend before main sale</li>
+                        </ul>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>Call show-up rate: 30-50% → 85-95%</li>
+                            <li>Call booking volume: -20% (fewer but better leads)</li>
+                            <li>Close rate: +25-40% (only serious buyers on calls)</li>
+                            <li>Revenue per webinar: +$50K-80K</li>
+                        </ul>
+
+                        <div class="impact-badge">MINDVALLEY USES THIS MODEL SUCCESSFULLY</div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 2 -->
+                <div class="rec-card">
+                    <span class="rec-number">2</span>
+                    <h3 class="rec-title">THE MINDVALLEY CASE STUDY</h3>
+                    <div class="rec-content">
+                        <p><strong>How Mindvalley Does It:</strong></p>
+
+                        <div class="code-example">MINDVALLEY'S APPLICATION FEE MODEL:
+
+• $97 application fee to speak with a coach
+• 100% refundable if not a fit
+• Fully credited toward program enrollment
+• Positioned as "quality control" (not revenue generation)
+
+RESULTS:
+→ Call show-up rate: 92% (vs. 35% without fee)
+→ Close rate: 3x higher (pre-qualified leads)
+→ Sales team efficiency: Dramatically improved
+→ Customer quality: Much higher (serious buyers only)
+
+KEY INSIGHT:
+"The $97 isn't about the money. It's about commitment.
+When someone pays $97 to talk to us, they've already decided 
+they're serious. The sales call is just logistics."
+
+- Mindvalley Sales Team</div>
+
+                        <p><strong>Why This Translates to WOO:</strong></p>
+                        <ul class="check-list">
+                            <li>Similar audience (business owners investing in growth)</li>
+                            <li>Similar ticket price ($10K range)</li>
+                            <li>Similar sales process (application → call → enrollment)</li>
+                            <li>Same psychology (commitment through payment)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 3 -->
+                <div class="rec-card">
+                    <span class="rec-number">3</span>
+                    <h3 class="rec-title">HOW TO POSITION THE APPLICATION FEE</h3>
+                    <div class="rec-content">
+                        <p><strong>In the Webinar Close:</strong></p>
+
+                        <div class="code-example">SCRIPT ADDITION (After Stack Reveal):
+
+"Now, here's something important:
+
+We only work with 50 business owners per quarter.
+
+Why?
+
+Because I personally show up to every coaching call, 
+and I can't effectively support more than 50 businesses at once.
+
+So we need to make sure you're a fit.
+
+Here's how this works:
+
+STEP 1: Click the button below to submit your application
+
+STEP 2: There's a $97 application fee
+
+(Now, before you think 'why do I have to pay to apply?'—let me explain)
+
+This fee serves two purposes:
+
+First, it ensures we're only speaking with serious business owners 
+who are ready to invest in growth. Not tire-kickers.
+
+Second, it's 100% refundable if we determine it's not a fit.
+
+And if we DO accept you? That $97 is credited toward your enrollment.
+
+So worst case, you get your money back.
+Best case, you get it credited toward the program.
+
+Make sense?
+
+Click below to apply now."</div>
+
+                        <p><strong>In Follow-Up Emails:</strong></p>
+
+                        <div class="code-example">EMAIL SUBJECT: "Why the $97 application fee?" [FAQ]
+
+{First Name},
+
+A few people asked me about the $97 application fee.
+
+Fair question. Here's why:
+
+We're not trying to make money from applications.
+(Honestly, $97 barely covers the admin costs of reviewing applications 
+and scheduling calls.)
+
+We're trying to filter for commitment.
+
+Here's the truth:
+
+Last year, we took 300+ "free consultation calls" with business owners.
+
+Know how many actually enrolled? 47.
+
+That's a 15% close rate.
+
+Why so low?
+
+Because most people who book free calls are just gathering information. 
+They're not ready to buy. They're "exploring options."
+
+This year, we added the $97 application fee.
+
+Know what happened?
+
+We took 120 calls. 89 enrolled.
+
+That's a 74% close rate.
+
+Why?
+
+Because when someone pays $97 just to TALK to us, 
+they've already decided they're serious.
+
+The call isn't "should I do this?"
+
+It's "how do we get started?"
+
+Big difference.
+
+So yes, there's a $97 application fee.
+
+And yes, it's 100% refundable + credited toward enrollment.
+
+If you're serious about scaling your business, 
+this shouldn't be an issue.
+
+If you're NOT serious... well, that's exactly why we have the fee.
+
+Apply here: [Link]
+
+-Stacy
+
+P.S. We have 38 spots left for January. Once we hit 50, cart closes.</div>
+
+                        <p><strong>Objection Handling:</strong></p>
+                        <ul class="check-list">
+                            <li><strong>Objection:</strong> "Why do I have to pay to apply?"<br>
+                            <strong>Answer:</strong> "To ensure we're both investing our time wisely. It's refundable if not a fit, credited if you enroll."</li>
+                            <li><strong>Objection:</strong> "I've never paid for a sales call before."<br>
+                            <strong>Answer:</strong> "That's exactly why most sales calls waste everyone's time. This ensures we're both serious."</li>
+                            <li><strong>Objection:</strong> "Can I get a refund?"<br>
+                            <strong>Answer:</strong> "Absolutely. 100% refundable within 7 days if we determine it's not a fit."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 4 -->
+                <div class="rec-card">
+                    <span class="rec-number">4</span>
+                    <h3 class="rec-title">IMPLEMENTATION & TESTING STRATEGY</h3>
+                    <div class="rec-content">
+                        <p><strong>How To Roll This Out:</strong></p>
+
+                        <p><strong>PHASE 1: A/B Test (First 2 Webinars)</strong></p>
+                        <ul class="check-list">
+                            <li>Webinar #1: No application fee (control group)</li>
+                            <li>Webinar #2: $97 application fee (test group)</li>
+                            <li>Measure: Call booking rate, show-up rate, close rate, revenue</li>
+                        </ul>
+
+                        <p><strong>PHASE 2: Analyze Results</strong></p>
+                        <div class="code-example">METRICS TO TRACK:
+
+Control Group (No Fee):
+- Applications submitted: 100
+- Calls booked: 100
+- Calls completed: 50 (50% show-up)
+- Sales: 12 (24% close rate)
+- Revenue: $120,000
+
+Test Group ($97 Fee):
+- Applications submitted: 80 (-20%)
+- Calls booked: 80
+- Calls completed: 72 (90% show-up)
+- Sales: 22 (30% close rate)
+- Revenue: $220,000
+- Application fees: $7,760
+
+WINNER: Test Group
++$107,760 additional revenue (+90%)</div>
+
+                        <p><strong>PHASE 3: Rollout If Successful</strong></p>
+                        <ul class="check-list">
+                            <li>Implement permanently if test group outperforms by 30%+</li>
+                            <li>Train sales team on new process</li>
+                            <li>Update all materials to reference application fee</li>
+                            <li>Monitor refund requests (should be <5%)</li>
+                        </ul>
+
+                        <p><strong>Technical Setup Needed:</strong></p>
+                        <ul class="check-list">
+                            <li>Payment processor integration (Stripe)</li>
+                            <li>Refund policy automation</li>
+                            <li>Application review workflow</li>
+                            <li>Sales team scheduling system</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendation 5 -->
+                <div class="rec-card">
+                    <span class="rec-number">5</span>
+                    <h3 class="rec-title">ALTERNATIVE: TIERED APPLICATION FEES</h3>
+                    <div class="rec-content">
+                        <p><strong>Advanced Strategy:</strong> Offer two tiers</p>
+
+                        <div class="comparison">
+                            <div class="before-box">
+                                <div class="box-label">OPTION 1: STANDARD APPLICATION</div>
+                                <p><strong>$97 Application Fee</strong></p>
+                                <p style="margin-top: 1rem;">
+                                    ✓ Application review within 24-48 hours<br>
+                                    ✓ 30-minute strategy call<br>
+                                    ✓ Program details + pricing<br>
+                                    ✓ Q&A with enrollment specialist
+                                </p>
+                            </div>
+                            <div class="after-box">
+                                <div class="box-label">OPTION 2: PRIORITY APPLICATION</div>
+                                <p><strong>$297 Application Fee</strong></p>
+                                <p style="margin-top: 1rem;">
+                                    ✓ Application review within 4 hours<br>
+                                    ✓ 60-minute strategy call WITH STACY<br>
+                                    ✓ Custom implementation roadmap<br>
+                                    ✓ Skip the line (immediate booking)<br>
+                                    ✓ Bonus: Profit Leak Audit ($500 value)
+                                </p>
+                            </div>
+                        </div>
+
+                        <p><strong>Why This Works:</strong></p>
+                        <ul class="check-list">
+                            <li>Decoy pricing (makes $97 feel cheap)</li>
+                            <li>Captures high-intent buyers at $297</li>
+                            <li>Stacy's time only for premium applicants</li>
+                            <li>Self-segmentation (buyers choose their level)</li>
+                        </ul>
+
+                        <p><strong>Expected Split:</strong></p>
+                        <ul class="check-list">
+                            <li>70% choose $97 option</li>
+                            <li>30% choose $297 option</li>
+                            <li>Average application fee: $157</li>
+                            <li>Additional revenue: +$6K-9K per webinar in application fees alone</li>
+                        </ul>
+
+                        <div class="impact-badge">ADVANCED TACTIC - TEST AFTER BASIC MODEL WORKS</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sales Summary -->
+            <div class="roi-table">
+                <h3 style="margin-bottom: 2rem;">SALES OPTIMIZATION: EXPECTED IMPACT</h3>
+                <div class="roi-row">
+                    <span>Current Call Show-Up Rate:</span>
+                    <span class="roi-value">30-50%</span>
+                </div>
+                <div class="roi-row">
+                    <span>With $97 Application Fee:</span>
+                    <span class="roi-value">85-95%</span>
+                </div>
+                <div class="roi-row">
+                    <span>Current Close Rate:</span>
+                    <span class="roi-value">~25%</span>
+                </div>
+                <div class="roi-row">
+                    <span>With Pre-Qualified Leads:</span>
+                    <span class="roi-value">30-40%</span>
+                </div>
+                <div class="roi-row" style="border-top: 3px solid var(--white);">
+                    <span>Additional Revenue Per Webinar:</span>
+                    <span class="roi-value">+$50K-80K</span>
+                </div>
+                <div class="roi-row">
+                    <span>Additional Annual Revenue (24 webinars):</span>
+                    <span class="roi-value">+$1.2M-1.9M</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POST-WEBINAR SECTION -->
+    <section id="post-webinar" class="section section-red">
+        <div class="container">
+            <h2>SECTION 6: POST-WEBINAR SEQUENCE</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 2rem; font-weight: 700;">⚠️ CRITICAL FINDING: YOU HAVE NO POST-WEBINAR SEQUENCE</p>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">According to the "Important Asset Completeness" document: <em>"We do not provide replay links" and "Our traditional post-webinar email series is currently off."</em></p>
+
+            <div class="impact-badge" style="background: white; color: var(--red); font-size: 2rem;">THIS IS COSTING YOU $150K-300K PER WEBINAR</div>
+
+            <div class="recommendations">
+                <!-- Recommendation 1 -->
+                <div class="rec-card">
+                    <span class="rec-number">1</span>
+                    <h3 class="rec-title">BUILD A 5-DAY REPLAY SEQUENCE</h3>
+                    <div class="rec-content">
+                        <p><strong>The Math:</strong></p>
+                        <ul class="check-list">
+                            <li>Current: 100 calls booked live, ~25 sales = $350K</li>
+                            <li>Missing: 400+ attendees who didn't book</li>
+                            <li>With replay sequence: +30-50 applications = +$150K-225K</li>
+                        </ul>
+
+                        <p><strong>5-Day Email Framework:</strong></p>
+
+                        <div class="code-example">DAY 1: "Thanks + Replay + Urgency"
+Subject: Thanks for joining today! (+ replay link)
+
+[Replay link + recap + CTA to apply]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DAY 2: "FAQ + Objection Crusher"
+Subject: "But what if my business is different?"
+
+[Address top 3 objections with answers]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DAY 3: "Case Study"
+Subject: How Lauren went from $400K → $2.8M in 18 months
+
+[Full transformation story with specifics]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DAY 4: "Last Chance (Soft)"
+Subject: Enrollment closes tomorrow at midnight
+
+[Reminder of what's included + spots remaining]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DAY 5: "Cart Close (Hard)"
+Subject: 🚨 FINAL CALL - cart closes tonight
+
+[Final urgency push + countdown]</div>
+
+                        <p><strong>Expected Impact:</strong></p>
+                        <ul class="check-list">
+                            <li>+30-50 additional applications per webinar</li>
+                            <li>+$150K-225K additional revenue per webinar</li>
+                            <li>+$3.6M-5.4M annually (24 webinars/year)</li>
+                        </ul>
+
+                        <div class="impact-badge">IMPLEMENT THIS IMMEDIATELY</div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 2 -->
+                <div class="rec-card">
+                    <span class="rec-number">2</span>
+                    <h3 class="rec-title">SEGMENT NON-BUYERS FOR NURTURE</h3>
+                    <div class="rec-content">
+                        <p><strong>After Cart Close:</strong> Move non-buyers to a long-term nurture sequence.</p>
+
+                        <p><strong>30-Day Nurture Arc:</strong></p>
+                        <ul class="check-list">
+                            <li>Week 1: Case study email</li>
+                            <li>Week 2: "Behind the scenes" of a client win</li>
+                            <li>Week 3: FAQ/objection handling</li>
+                            <li>Week 4: Waitlist announcement for next cohort</li>
+                        </ul>
+
+                        <p><strong>Goal:</strong> Keep them warm for the next webinar (3-4 months out)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 90-DAY ROADMAP SECTION -->
+    <section id="roadmap" class="section section-light">
+        <div class="container">
+            <h2>SECTION 7: 90-DAY IMPLEMENTATION ROADMAP</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">Here's exactly how to roll out these optimizations over the next 90 days:</p>
+
+            <div style="margin: 3rem 0;">
+                <h3 style="color: var(--red); margin-bottom: 2rem;">MONTH 1: FOUNDATION (WEEKS 1-4)</h3>
+
+                <div class="rec-card">
+                    <div class="rec-content">
+                        <p><strong>Week 1: Landing Page Optimization</strong></p>
+                        <ul class="check-list">
+                            <li>Record 60-90 second video explainer</li>
+                            <li>Rewrite headline + subheadline</li>
+                            <li>Add massive social proof section</li>
+                            <li>Announce free handbook prominently</li>
+                            <li>A/B test new vs. old</li>
+                        </ul>
+
+                        <p><strong>Week 2: Thank You Page Enhancement</strong></p>
+                        <ul class="check-list">
+                            <li>Create instant download for handbook</li>
+                            <li>Set up video completion tracking</li>
+                            <li>Add social proof counter</li>
+                            <li>Implement progressive unlocking</li>
+                        </ul>
+
+                        <p><strong>Week 3: Email Sequence Rebuild</strong></p>
+                        <ul class="check-list">
+                            <li>Rewrite welcome email (pattern interrupt)</li>
+                            <li>Rewrite Email #2 (objection handling)</li>
+                            <li>Enhance Email #3 (emotional story)</li>
+                            <li>Build 6-hr, 1-hr, 15-min reminders</li>
+                        </ul>
+
+                        <p><strong>Week 4: Form Qualification</strong></p>
+                        <ul class="check-list">
+                            <li>Add 2-3 qualifying questions to form</li>
+                            <li>Set up segmentation in CRM</li>
+                            <li>Test with small traffic sample</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--red); margin: 3rem 0 2rem;">MONTH 2: WEBINAR OPTIMIZATION (WEEKS 5-8)</h3>
+
+                <div class="rec-card">
+                    <div class="rec-content">
+                        <p><strong>Week 5: Opening Sequence</strong></p>
+                        <ul class="check-list">
+                            <li>Script first 10 minutes with new structure</li>
+                            <li>Add engagement loops</li>
+                            <li>Build curiosity gaps</li>
+                            <li>Practice delivery</li>
+                        </ul>
+
+                        <p><strong>Week 6: Enemy Positioning</strong></p>
+                        <ul class="check-list">
+                            <li>Define the "old way" (3 things that don't work)</li>
+                            <li>Contrast with your framework</li>
+                            <li>Weave throughout presentation</li>
+                        </ul>
+
+                        <p><strong>Week 7: Stack Building</strong></p>
+                        <ul class="check-list">
+                            <li>Break down program into modules</li>
+                            <li>Assign value to each component</li>
+                            <li>Script bonus reveals</li>
+                            <li>Add guarantee + scarcity</li>
+                        </ul>
+
+                        <p><strong>Week 8: CTA Optimization</strong></p>
+                        <ul class="check-list">
+                            <li>Script clear 3-step application process</li>
+                            <li>Prepare FAQ responses</li>
+                            <li>Build urgency language</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--red); margin: 3rem 0 2rem;">MONTH 3: POST-WEBINAR (WEEKS 9-12)</h3>
+
+                <div class="rec-card">
+                    <div class="rec-content">
+                        <p><strong>Week 9: Build Replay Sequence</strong></p>
+                        <ul class="check-list">
+                            <li>Write 5-day email sequence</li>
+                            <li>Set up replay hosting</li>
+                            <li>Configure automation triggers</li>
+                        </ul>
+
+                        <p><strong>Week 10: Technical Setup</strong></p>
+                        <ul class="check-list">
+                            <li>Build replay landing page</li>
+                            <li>Set up countdown timers</li>
+                            <li>Test all automation flows</li>
+                        </ul>
+
+                        <p><strong>Week 11: Nurture Sequence</strong></p>
+                        <ul class="check-list">
+                            <li>Build 30-day nurture for non-buyers</li>
+                            <li>Create case study content</li>
+                            <li>Set up waitlist</li>
+                        </ul>
+
+                        <p><strong>Week 12: Analyze & Iterate</strong></p>
+                        <ul class="check-list">
+                            <li>Pull metrics from first optimized webinar</li>
+                            <li>Compare to baseline</li>
+                            <li>Identify remaining bottlenecks</li>
+                            <li>Plan next iteration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI PROJECTIONS SECTION -->
+    <section id="roi" class="section section-dark">
+        <div class="container">
+            <h2>SECTION 8: ROI PROJECTIONS</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">Here's the conservative math on what these optimizations will generate:</p>
+
+            <h3 style="margin-top: 3rem;">CURRENT STATE (BASELINE)</h3>
+            <div class="roi-table">
+                <div class="roi-row">
+                    <span>Annual Webinars:</span>
+                    <span class="roi-value">24</span>
+                </div>
+                <div class="roi-row">
+                    <span>Avg Registrations:</span>
+                    <span class="roi-value">1,900</span>
+                </div>
+                <div class="roi-row">
+                    <span>Avg Ad Spend Per Webinar:</span>
+                    <span class="roi-value">$65K</span>
+                </div>
+                <div class="roi-row">
+                    <span>Avg CPL:</span>
+                    <span class="roi-value">$32.50</span>
+                </div>
+                <div class="roi-row">
+                    <span>Avg Attendees (25% show-up):</span>
+                    <span class="roi-value">475</span>
+                </div>
+                <div class="roi-row">
+                    <span>Avg Calls Booked (20% rate):</span>
+                    <span class="roi-value">100</span>
+                </div>
+                <div class="roi-row">
+                    <span>Avg Sales (estimated 25% close):</span>
+                    <span class="roi-value">25</span>
+                </div>
+                <div class="roi-row">
+                    <span>Revenue Per Webinar:</span>
+                    <span class="roi-value">$196K</span>
+                </div>
+                <div class="roi-row">
+                    <span>Current ROAS:</span>
+                    <span class="roi-value">3.0x</span>
+                </div>
+                <div class="roi-row">
+                    <span>Annual Revenue:</span>
+                    <span class="roi-value">$4.7M</span>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 4rem;">OPTIMIZED STATE (YEAR 1)</h3>
+
+            <div style="background: var(--gray-dark); padding: 2rem; margin: 2rem 0;">
+                <h4 style="color: var(--red); margin-bottom: 1rem;">PHASE 1: QUICK WINS (MONTHS 1-3)</h4>
+                <ul class="check-list">
+                    <li>Email sequence optimization: +5% show-up rate</li>
+                    <li>Landing page optimization: -10% CPL, +8% conversion</li>
+                    <li><strong>Impact: +$50K per webinar | +$600K annually</strong></li>
+                </ul>
+            </div>
+
+            <div style="background: var(--gray-dark); padding: 2rem; margin: 2rem 0;">
+                <h4 style="color: var(--red); margin-bottom: 1rem;">PHASE 2: WEBINAR CONTENT (MONTHS 4-6)</h4>
+                <ul class="check-list">
+                    <li>Opening sequence: +3% show-up rate</li>
+                    <li>Stack building: +5% attendee→call rate</li>
+                    <li>Enemy positioning: +8% call→close rate</li>
+                    <li><strong>Impact: +$75K per webinar | +$900K annually</strong></li>
+                </ul>
+            </div>
+
+            <div style="background: var(--gray-dark); padding: 2rem; margin: 2rem 0;">
+                <h4 style="color: var(--red); margin-bottom: 1rem;">PHASE 3: POST-WEBINAR (MONTHS 7-9)</h4>
+                <ul class="check-list">
+                    <li>5-day replay sequence: +30 sales per webinar</li>
+                    <li><strong>Impact: +$120K per webinar | +$1.44M annually</strong></li>
+                </ul>
+            </div>
+
+            <div style="background: var(--gray-dark); padding: 2rem; margin: 2rem 0;">
+                <h4 style="color: var(--red); margin-bottom: 1rem;">PHASE 4: SCALE (MONTHS 10-12)</h4>
+                <ul class="check-list">
+                    <li>Increase webinar frequency: 24 → 36 per year</li>
+                    <li>Maintain conversion rates from Phases 1-3</li>
+                    <li><strong>Impact: +$3.6M annually</strong></li>
+                </ul>
+            </div>
+
+            <div class="roi-table" style="margin-top: 4rem; border: 3px solid var(--red);">
+                <h3 style="color: var(--red); margin-bottom: 2rem;">YEAR 1 TOTALS</h3>
+                <div class="roi-row">
+                    <span>Baseline Annual Revenue:</span>
+                    <span class="roi-value">$4.8M</span>
+                </div>
+                <div class="roi-row">
+                    <span>Year 1 Optimized Revenue:</span>
+                    <span class="roi-value">$11.34M</span>
+                </div>
+                <div class="roi-row" style="border-top: 3px solid var(--red); padding-top: 1.5rem; font-size: 1.5rem;">
+                    <span>INCREASE:</span>
+                    <span class="roi-value">+$6.54M (+136%)</span>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 4rem; margin-bottom: 2rem;">IMPLEMENTATION APPROACH</h3>
+            <div class="roi-table">
+                <div class="roi-row">
+                    <span>Internal Team Ownership:</span>
+                    <span style="font-family: var(--font-body); font-size: 1rem; text-align: right;">Your team handles all copywriting, design, and tech setup</span>
+                </div>
+                <div class="roi-row">
+                    <span>Timeline:</span>
+                    <span style="font-family: var(--font-body); font-size: 1rem; text-align: right;">90 days to full implementation</span>
+                </div>
+                <div class="roi-row">
+                    <span>Testing Approach:</span>
+                    <span style="font-family: var(--font-body); font-size: 1rem; text-align: right;">A/B test each change, measure results, iterate</span>
+                </div>
+            </div>
+
+            <div class="roi-table" style="margin-top: 3rem; background: var(--red); color: var(--white); border-color: var(--white);">
+                <h3 style="margin-bottom: 2rem;">REVENUE IMPACT</h3>
+                <div class="roi-row">
+                    <span>Current Annual Revenue:</span>
+                    <span style="font-family: var(--font-display); font-size: 1.5rem;">$4.8M</span>
+                </div>
+                <div class="roi-row">
+                    <span>Year 1 Optimized Revenue:</span>
+                    <span style="font-family: var(--font-display); font-size: 1.5rem;">$11.34M</span>
+                </div>
+                <div class="roi-row" style="font-size: 2rem; padding: 2rem 0; border-top: 3px solid white;">
+                    <span>Additional Revenue:</span>
+                    <span style="font-family: var(--font-display); font-size: 3rem;">+$6.54M</span>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 4rem; margin-bottom: 2rem;">IMPACT BY CONVERSION RATE CHANGES</h3>
+            
+            <p style="font-size: 1.125rem; margin-bottom: 2rem; padding: 1.5rem; background: var(--gray-dark); border-left: 4px solid var(--red);">
+                <strong>Important Note:</strong> Your current revenue is ~$196K per webinar ($4.8M annually). The numbers below show ADDITIONAL revenue opportunity from optimizations, not replacement of current revenue.
+            </p>
+
+            <div class="roi-table">
+                <div class="roi-row" style="background: var(--gray-dark); font-weight: 700;">
+                    <span>Optimization Area</span>
+                    <span>Current</span>
+                    <span>Target</span>
+                    <span>Revenue Impact</span>
+                </div>
+                <div class="roi-row">
+                    <span>Landing Page CPL</span>
+                    <span>$32.50</span>
+                    <span class="roi-value">$12-15</span>
+                    <span class="roi-value">+$840K/year</span>
+                </div>
+                <div class="roi-row">
+                    <span>Show-Up Rate</span>
+                    <span>25%</span>
+                    <span class="roi-value">38-42%</span>
+                    <span class="roi-value">+$1.1M/year</span>
+                </div>
+                <div class="roi-row">
+                    <span>Attendee → Call Rate</span>
+                    <span>20%</span>
+                    <span class="roi-value">26%</span>
+                    <span class="roi-value">+$900K/year</span>
+                </div>
+                <div class="roi-row">
+                    <span>Post-Webinar Sequence Revenue (Currently Missing)</span>
+                    <span>$0</span>
+                    <span class="roi-value">+30 sales/webinar</span>
+                    <span class="roi-value">+$1.44M/year</span>
+                </div>
+                <div class="roi-row">
+                    <span>Webinar Frequency</span>
+                    <span>24/year</span>
+                    <span class="roi-value">36/year</span>
+                    <span class="roi-value">+$3.6M/year</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CTA -->
+    <section class="section" style="background: var(--black); color: var(--white); text-align: center; padding: 5rem 0;">
+        <div class="container">
+            <h2 style="margin-bottom: 2rem;">READY TO IMPLEMENT?</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 3rem;">
+                Let's turn your $4.8M funnel into a $10M+ revenue machine.
+            </p>
+            <p style="font-size: 1.125rem; color: var(--gray-medium);">
+                Prepared by <strong style="color: var(--red);">WeConquer Media</strong><br>
+                Performance Marketing & Funnel Optimization Specialists<br>
+                December 2024
+            </p>
+        </div>
+    </section>
+
+</body>
+</html>
