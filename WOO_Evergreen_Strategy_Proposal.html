@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well-Oiled Operations - Evergreen Funnel Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Brand Foundations */
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --red: #FF0000;
+            --gray-light: #F5F5F5;
+            --gray-medium: #666666;
+            --gray-dark: #1A1A1A;
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--black);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+        }
+
+        h1 { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 1rem; }
+        h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.5rem; }
+        h3 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 1rem; }
+        h4 { font-size: clamp(1.25rem, 2.5vw, 2rem); margin-bottom: 0.75rem; }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--black);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-medium);
+            margin-bottom: 2rem;
+        }
+
+        .hero-red {
+            color: var(--red);
+            font-family: var(--font-display);
+            font-size: 4rem;
+            display: block;
+            margin: 1rem 0;
+        }
+
+        /* Navigation */
+        .nav-section {
+            background: var(--white);
+            padding: 3rem 0;
+            border-bottom: 3px solid var(--black);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .nav-button {
+            background: var(--black);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--black);
+        }
+
+        .nav-button:hover {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+            scroll-margin-top: 120px;
+        }
+
+        .section-dark {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .section-light {
+            background: var(--gray-light);
+        }
+
+        .section-red {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .section-red h2,
+        .section-red h3,
+        .section-red h4,
+        .section-red p,
+        .section-red li,
+        .section-red span,
+        .section-red div {
+            color: var(--white);
+        }
+
+        .section-red .rec-card {
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--white);
+        }
+
+        .section-red .rec-card h3,
+        .section-red .rec-card p,
+        .section-red .rec-card li {
+            color: var(--white);
+        }
+
+        .section-red .rec-content strong {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .section-red .impact-badge {
+            background: var(--white);
+            color: var(--red);
+        }
+
+        .section-red .roi-table {
+            background: rgba(0, 0, 0, 0.3);
+            border-color: var(--white);
+        }
+
+        .section-red .roi-table h3,
+        .section-red .roi-table h4,
+        .section-red .roi-table .roi-row,
+        .section-red .roi-table .roi-row span {
+            color: var(--white) !important;
+        }
+
+        .section-red .roi-table .roi-value {
+            color: var(--white) !important;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 2rem;
+            border-left: 4px solid var(--red);
+            text-align: center;
+        }
+
+        .section-dark .stat-card {
+            background: var(--gray-dark);
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--red);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Recommendation Cards */
+        .recommendations {
+            margin: 3rem 0;
+        }
+
+        .rec-card {
+            background: var(--white);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 6px solid var(--red);
+        }
+
+        .section-dark .rec-card {
+            background: var(--gray-dark);
+        }
+
+        .rec-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--red);
+            display: inline-block;
+            margin-right: 1rem;
+        }
+
+        .rec-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .rec-content {
+            margin-left: 3.5rem;
+            line-height: 1.8;
+        }
+
+        .rec-content strong {
+            color: var(--red);
+        }
+
+        .section-dark .rec-content strong {
+            color: var(--red);
+        }
+
+        /* Before/After Boxes */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .before-box, .after-box {
+            padding: 2rem;
+            border: 2px solid var(--black);
+        }
+
+        .before-box {
+            background: var(--gray-light);
+            color: var(--black);
+        }
+
+        .before-box .box-label {
+            color: var(--black);
+        }
+
+        .before-box p {
+            color: var(--black);
+        }
+
+        .before-box strong {
+            color: var(--red);
+        }
+
+        .after-box {
+            background: var(--red);
+            color: var(--white);
+            border-color: var(--red);
+        }
+
+        .after-box .box-label {
+            color: var(--white);
+        }
+
+        .after-box p {
+            color: var(--white);
+        }
+
+        .after-box strong {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .box-label {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Code Blocks */
+        .code-example {
+            background: var(--gray-dark) !important;
+            color: var(--white) !important;
+            padding: 2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--red);
+            white-space: pre-wrap;
+        }
+
+        .section-red .code-example,
+        .section-dark .code-example,
+        .rec-card .code-example {
+            background: var(--gray-dark) !important;
+            color: var(--white) !important;
+        }
+
+        /* Lists */
+        .check-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .check-list li {
+            padding: 0.5rem 0 0.5rem 2rem;
+            position: relative;
+        }
+
+        .check-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Impact Badge */
+        .impact-badge {
+            display: inline-block;
+            background: var(--red);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin: 1rem 0;
+        }
+
+        /* ROI Calculator */
+        .roi-table {
+            background: var(--white);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 3px solid var(--black);
+        }
+
+        .section-dark .roi-table {
+            background: var(--gray-dark);
+            border-color: var(--white);
+        }
+
+        .roi-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-medium);
+        }
+
+        .roi-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .roi-value {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--red);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rec-content {
+                margin-left: 0;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav-section {
+                position: static;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>WELL-OILED OPERATIONS</h1>
+            <p class="hero-subtitle">Evergreen Funnel Strategy</p>
+            <span class="hero-red">$4M+ Annual Revenue</span>
+            <p style="font-size: 1.25rem;">2-Funnel System: Evergreen Webinar + Quiz Funnel</p>
+            <p style="margin-top: 2rem; color: var(--gray-medium);">Prepared by WeConquer Media | December 2025</p>
+        </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <section class="nav-section">
+        <div class="container">
+            <h3 style="text-align: center; margin-bottom: 2rem;">JUMP TO SECTION:</h3>
+            <div class="nav-grid">
+                <a href="#overview" class="nav-button">Overview</a>
+                <a href="#vsl-analysis" class="nav-button">Why VSL Failed</a>
+                <a href="#2funnel-strategy" class="nav-button">2-Funnel Strategy</a>
+                <a href="#evergreen-webinar" class="nav-button">Evergreen Webinar</a>
+                <a href="#quiz-funnel" class="nav-button">Quiz Funnel</a>
+                <a href="#implementation" class="nav-button">Implementation</a>
+                <a href="#roi" class="nav-button">ROI Projections</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXECUTIVE OVERVIEW -->
+    <section id="overview" class="section section-dark">
+        <div class="container">
+            <h2>EXECUTIVE OVERVIEW</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">Your VSL funnel isn't working. Your live webinar generates $196K per event but you're limited to 24 per year. Here's how to scale to $8M+ annually with two automated funnels.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">$4.7M</span>
+                    <span class="stat-label">Current Annual Revenue (24 Live Webinars)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">$8.1M+</span>
+                    <span class="stat-label">Projected Revenue (Evergreen + Quiz Funnels)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">365</span>
+                    <span class="stat-label">Days Per Year Evergreen Runs</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">+$3.4M</span>
+                    <span class="stat-label">Additional Annual Revenue</span>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 3rem;">THE CORE PROBLEM</h3>
+            <p style="font-size: 1.125rem;">You're turning away traffic between live webinars. Your VSL is too short to close $10K. You need automation that runs 24/7 AND captures warm traffic you're currently leaving on the table.</p>
+
+            <h3 style="margin-top: 3rem;">THE SOLUTION</h3>
+            <p style="font-size: 1.125rem;"><strong>Funnel #1:</strong> Evergreen Webinar (cold traffic, replaces live)</p>
+            <p style="font-size: 1.125rem;"><strong>Funnel #2:</strong> Quiz Funnel (warm traffic, retargeting, segmentation)</p>
+
+            <div class="impact-badge">2-FUNNEL SYSTEM = +$3.4M ANNUAL REVENUE</div>
+        </div>
+    </section>
+
+    <!-- VSL ANALYSIS -->
+    <section id="vsl-analysis" class="section section-light">
+        <div class="container">
+            <h2>SECTION 1: WHY YOUR CURRENT VSL FUNNEL ISN'T WORKING</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;"><strong style="color: var(--red);">Bottom Line:</strong> A 3:43 video cannot close a $10,000 program. Here are the 5 fatal flaws.</p>
+
+            <div class="recommendations">
+                <!-- Issue 1 -->
+                <div class="rec-card">
+                    <span class="rec-number">1</span>
+                    <h3 class="rec-title">VSL TOO SHORT TO BUILD DESIRE</h3>
+                    <div class="rec-content">
+                        <p><strong>Current VSL Runtime:</strong> 3 minutes 43 seconds</p>
+
+                        <p><strong>What It Does:</strong></p>
+                        <ul class="check-list">
+                            <li>Identifies pain points (firefighting, overwhelm)</li>
+                            <li>Shows credibility (Inc 5000 awards, 700+ clients)</li>
+                            <li>Mentions 3 case studies</li>
+                            <li>States guarantee</li>
+                        </ul>
+
+                        <p><strong>What It DOESN'T Do:</strong></p>
+                        <ul class="check-list">
+                            <li>❌ Teach a framework ("aha moment")</li>
+                            <li>❌ Build emotional investment</li>
+                            <li>❌ Stack the offer</li>
+                            <li>❌ Create urgency/scarcity</li>
+                        </ul>
+
+                        <div class="comparison">
+                            <div class="before-box">
+                                <div class="box-label">❌ 3:43 VSL:</div>
+                                <p>"Hi, I'm Stacy. You're overwhelmed. I can help. Book a call."</p>
+                                <p style="margin-top: 1rem; font-size: 0.875rem;">
+                                    <strong>Works for:</strong> $97-497 products<br>
+                                    <strong>Doesn't work for:</strong> $10K programs
+                                </p>
+                            </div>
+                            <div class="after-box">
+                                <div class="box-label">✓ 60-MIN WEBINAR:</div>
+                                <p>Problem → Framework → Aha moment → Case studies → Stack → Objections → Urgency → Close</p>
+                                <p style="margin-top: 1rem; font-size: 0.875rem;">
+                                    <strong>Required for:</strong> $10K+ programs
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Issue 2 -->
+                <div class="rec-card">
+                    <span class="rec-number">2</span>
+                    <h3 class="rec-title">NO CLEAR OFFER PRESENTATION</h3>
+                    <div class="rec-content">
+                        <p><strong>VSL mentions:</strong> Guarantee, limited spots, 60-min call</p>
+                        <p><strong>VSL doesn't mention:</strong> What's included, how much it costs, value stack, bonuses, why buy NOW</p>
+                        <div class="impact-badge">UNCLEAR OFFER = LOW CONVERSION</div>
+                    </div>
+                </div>
+
+                <!-- Issue 3 -->
+                <div class="rec-card">
+                    <span class="rec-number">3</span>
+                    <h3 class="rec-title">APPLICATION PAGE TOO WEAK</h3>
+                    <div class="rec-content">
+                        <p><strong>Current:</strong> Phone + Name fields only</p>
+                        <p><strong>Missing:</strong> Testimonials, urgency, qualifying questions, value proposition</p>
+                        <p><strong>Result:</strong> Low-quality leads book calls, sales team wastes time</p>
+                    </div>
+                </div>
+
+                <!-- Issue 4 -->
+                <div class="rec-card">
+                    <span class="rec-number">4</span>
+                    <h3 class="rec-title">THANK YOU PAGE DOESN'T BUILD EXCITEMENT</h3>
+                    <div class="rec-content">
+                        <p><strong>Current:</strong> Prep video + links + testimonials</p>
+                        <p><strong>Missing:</strong> Enthusiasm, anticipation, micro-commitments</p>
+                        <p><strong>Result:</strong> Missed opportunity to increase commitment</p>
+                    </div>
+                </div>
+
+                <!-- Issue 5 -->
+                <div class="rec-card">
+                    <span class="rec-number">5</span>
+                    <h3 class="rec-title">EMAILS DON'T DRIVE ACTION</h3>
+                    <div class="rec-content">
+                        <p><strong>All 4 emails say:</strong> "Watch this video"</p>
+                        <p><strong>None say:</strong> "Book your call NOW"</p>
+                        <p><strong>Result:</strong> Education without conversion</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="roi-table">
+                <h3 style="margin-bottom: 2rem;">VSL FUNNEL: DIAGNOSIS</h3>
+                <div class="roi-row">
+                    <span>VSL Length:</span>
+                    <span style="color: var(--red);">3:43 (needs 30-60 min)</span>
+                </div>
+                <div class="roi-row">
+                    <span>Offer Clarity:</span>
+                    <span style="color: var(--red);">Unclear</span>
+                </div>
+                <div class="roi-row">
+                    <span>Lead Quality:</span>
+                    <span style="color: var(--red);">Unqualified</span>
+                </div>
+                <div class="roi-row" style="border-top: 3px solid var(--black);">
+                    <span>VERDICT:</span>
+                    <span style="color: var(--red);">CANNOT BE FIXED WITHOUT REBUILD</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2-FUNNEL STRATEGY -->
+    <section id="2funnel-strategy" class="section section-red">
+        <div class="container">
+            <h2>SECTION 2: THE 2-FUNNEL EVERGREEN STRATEGY</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">Instead of one funnel, you need TWO working together—one for cold traffic, one for warm traffic.</p>
+
+            <div class="recommendations">
+                <!-- Funnel 1 -->
+                <div class="rec-card">
+                    <span class="rec-number">1</span>
+                    <h3 class="rec-title">FUNNEL #1: EVERGREEN WEBINAR (COLD TRAFFIC)</h3>
+                    <div class="rec-content">
+                        <p><strong>Purpose:</strong> Replace live webinars with automated 60-min training</p>
+
+                        <p><strong>Traffic Source:</strong> Cold ads (Facebook, YouTube, Google)</p>
+
+                        <p><strong>Flow:</strong></p>
+                        <div class="code-example">Ad → Registration Page → Show-Up Sequence (6-7 emails)
+→ 60-Min Webinar → Post-Webinar Sequence (48 hours)
+→ Book Call → Close $10K Program</div>
+
+                        <p><strong>Why It Works:</strong></p>
+                        <ul class="check-list">
+                            <li>Your live webinar already generates $196K per event</li>
+                            <li>Same content, just automated</li>
+                            <li>Runs 24/7/365 (not limited to 24x/year)</li>
+                            <li>60 minutes = proper time to close high-ticket</li>
+                        </ul>
+
+                        <p><strong>Expected Performance (Conservative):</strong></p>
+                        <div class="roi-table">
+                            <div class="roi-row">
+                                <span>Registration Cost:</span>
+                                <span class="roi-value">$32.50 → $18 (optimized)</span>
+                            </div>
+                            <div class="roi-row">
+                                <span>Show-Up Rate:</span>
+                                <span class="roi-value">35-40% (vs 25% live)</span>
+                            </div>
+                            <div class="roi-row">
+                                <span>Call Booking Rate:</span>
+                                <span class="roi-value">18-22% (vs 20% live)</span>
+                            </div>
+                            <div class="roi-row">
+                                <span>Revenue Per "Webinar":</span>
+                                <span class="roi-value">$10K/day = $300K/month</span>
+                            </div>
+                            <div class="roi-row" style="border-top: 3px solid var(--white);">
+                                <span>Annual Revenue:</span>
+                                <span class="roi-value">$3.6M</span>
+                            </div>
+                        </div>
+
+                        <div class="impact-badge">PRIMARY FUNNEL: $3.6M ANNUAL</div>
+                    </div>
+                </div>
+
+                <!-- Funnel 2 -->
+                <div class="rec-card">
+                    <span class="rec-number">2</span>
+                    <h3 class="rec-title">FUNNEL #2: QUIZ FUNNEL (WARM TRAFFIC)</h3>
+                    <div class="rec-content">
+                        <p><strong>Purpose:</strong> Capture warm traffic, segment leads, personalize approach</p>
+
+                        <p><strong>Traffic Source:</strong></p>
+                        <ul class="check-list">
+                            <li>Retargeting (website visitors, webinar registrants who didn't show)</li>
+                            <li>Email list (existing subscribers)</li>
+                            <li>Social media followers</li>
+                            <li>YouTube viewers</li>
+                        </ul>
+
+                        <p><strong>Flow:</strong></p>
+                        <div class="code-example">Ad/Email → Quiz: "What's Your Business Bottleneck?"
+→ 8-10 Questions → Personalized Result Page
+→ Case Study (matching their bottleneck)
+→ Book Strategy Call → Close $10K Program</div>
+
+                        <p><strong>Why It Works:</strong></p>
+                        <ul class="check-list">
+                            <li><strong>Engagement:</strong> People love quizzes (60%+ completion rate)</li>
+                            <li><strong>Segmentation:</strong> Sales team knows pain point before call</li>
+                            <li><strong>Personalization:</strong> Result page addresses THEIR specific problem</li>
+                            <li><strong>Lower cost:</strong> Quiz opt-ins = $5-12 vs $32 webinar registrations</li>
+                            <li><strong>Faster:</strong> 2-3 min quiz vs 60-min webinar</li>
+                        </ul>
+
+                        <p><strong>Quiz Structure Example:</strong></p>
+                        <div class="code-example">QUESTION 1: What's your current annual revenue?
+  - Under $500K
+  - $500K - $1M
+  - $1M - $5M
+  - $5M+
+
+QUESTION 2: What's your biggest operational challenge?
+  - Can't find qualified team members
+  - Team exists but constantly needs me
+  - Systems don't exist or aren't followed
+  - Overwhelmed by daily firefighting
+
+QUESTION 3: How many hours/week do you work IN the business?
+  - 60+ hours
+  - 40-60 hours
+  - 20-40 hours
+  - Under 20 hours
+
+...8-10 questions total
+
+RESULT: "Your Bottleneck is TEAM DELEGATION"
+→ Show case study of client who solved team delegation
+→ "Book a call to solve your delegation bottleneck"</div>
+
+                        <p><strong>Expected Performance (Conservative):</strong></p>
+                        <div class="roi-table">
+                            <div class="roi-row">
+                                <span>Quiz Opt-In Cost:</span>
+                                <span class="roi-value">$8-12</span>
+                            </div>
+                            <div class="roi-row">
+                                <span>Completion Rate:</span>
+                                <span class="roi-value">60-70%</span>
+                            </div>
+                            <div class="roi-row">
+                                <span>Call Booking Rate:</span>
+                                <span class="roi-value">15-20%</span>
+                            </div>
+                            <div class="roi-row">
+                                <span>Close Rate:</span>
+                                <span class="roi-value">20-25% (warmer leads)</span>
+                            </div>
+                            <div class="roi-row" style="border-top: 3px solid var(--white);">
+                                <span>Annual Revenue:</span>
+                                <span class="roi-value">$500K-800K</span>
+                            </div>
+                        </div>
+
+                        <div class="impact-badge">SECONDARY FUNNEL: $500K-800K ANNUAL</div>
+                    </div>
+                </div>
+
+                <!-- Why Both -->
+                <div class="rec-card">
+                    <span class="rec-number">3</span>
+                    <h3 class="rec-title">WHY BOTH FUNNELS TOGETHER = DOMINANCE</h3>
+                    <div class="rec-content">
+                        <p><strong>The Warrior Babe Model:</strong> Multi-funnel approach captures every type of traffic</p>
+
+                        <div class="comparison">
+                            <div class="before-box">
+                                <div class="box-label">❌ SINGLE-FUNNEL PROBLEM:</div>
+                                <p><strong>Webinar Only:</strong> Loses people who don't want to sit for 60 min</p>
+                                <p><strong>Quiz Only:</strong> Doesn't educate cold traffic enough</p>
+                                <p><strong>VSL Only:</strong> Too short to close high-ticket</p>
+                            </div>
+                            <div class="after-box" style="background: var(--white); color: var(--black); border-color: var(--black);">
+                                <div class="box-label" style="color: var(--red);">✓ 2-FUNNEL SOLUTION:</div>
+                                <p style="color: var(--black);"><strong style="color: var(--red);">Cold Traffic:</strong> → Evergreen Webinar (education + trust)</p>
+                                <p style="color: var(--black);"><strong style="color: var(--red);">Warm Traffic:</strong> → Quiz Funnel (fast + personalized)</p>
+                                <p style="color: var(--black);"><strong style="color: var(--red);">Result:</strong> Capture EVERY lead type</p>
+                            </div>
+                        </div>
+
+                        <p><strong>Traffic Distribution:</strong></p>
+                        <div class="code-example">COLD TRAFFIC (70%):
+→ Evergreen Webinar
+→ Need education, don't know you yet
+→ 60 min to build trust + close
+
+WARM TRAFFIC (30%):
+→ Quiz Funnel
+→ Already aware, need personalized path
+→ 2-3 min to segment + book call
+
+COMBINED RESULT:
+→ $3.6M (evergreen) + $700K (quiz) = $4.3M annual
+→ +$3.4M vs current live-only model
+→ Runs 24/7 without your time</div>
+
+                        <div class="impact-badge">2 FUNNELS > 1 FUNNEL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVERGREEN WEBINAR FUNNEL -->
+    <section id="evergreen-webinar" class="section section-dark">
+        <div class="container">
+            <h2>SECTION 3: EVERGREEN WEBINAR FUNNEL (COMPLETE BUILD)</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">Step-by-step blueprint for your primary revenue driver.</p>
+
+            <div class="recommendations">
+                <!-- Registration Page -->
+                <div class="rec-card">
+                    <span class="rec-number">1</span>
+                    <h3 class="rec-title">REGISTRATION PAGE DESIGN</h3>
+                    <div class="rec-content">
+                        <p><strong>The Mindvalley Model:</strong> Offer TWO options to maximize conversions</p>
+
+                        <p><strong>Option A: "Watch Now" (30-40% choose this)</strong></p>
+                        <ul class="check-list">
+                            <li>Immediate access</li>
+                            <li>2-minute countdown → auto-redirect to webinar</li>
+                            <li><strong>Pros:</strong> High intent, instant gratification</li>
+                            <li><strong>Cons:</strong> Lower show-up quality (less commitment)</li>
+                        </ul>
+
+                        <p><strong>Option B: "Schedule for Later" (60-70% choose this)</strong></p>
+                        <ul class="check-list">
+                            <li>Pick date/time within next 3 days</li>
+                            <li>Calendar auto-add</li>
+                            <li>Show-up email sequence triggers</li>
+                            <li><strong>Pros:</strong> Higher commitment, better show-up rate</li>
+                        </ul>
+
+                        <p><strong>Registration Page Elements:</strong></p>
+                        <div class="code-example">HEADLINE:
+"From 80-Hour Weeks To Free Weekends: How 7-Figure Business Owners Are Adding $50K/Month In Profit While Working 20 Fewer Hours/Week"
+
+SUBHEADLINE:
+"Free 60-Minute Workshop Reveals The Exact System 700+ Business Owners Used To Build Teams That Run Without Them"
+
+VIDEO (60-90 seconds):
+→ Stacy speaks directly to camera
+→ "In this workshop, you'll discover..."
+→ 3 specific outcomes
+→ Social proof mention
+
+BULLET POINTS (What You'll Learn):
+→ Why hiring more people made your life WORSE (and what to do instead)
+→ The 80/20 Operations System that freed up 25+ hours/week for our clients
+→ How to stop being the bottleneck without losing control
+
+SOCIAL PROOF:
+→ "Join 21,000+ business owners who've taken back their time"
+→ 3-4 video testimonials with results
+
+CTA BUTTONS:
+→ "WATCH NOW (Starts In 2 Minutes)"
+→ "SCHEDULE FOR LATER"
+
+GUARANTEE:
+"This workshop is 100% free. No credit card required."</div>
+
+                        <div class="impact-badge">TWO OPTIONS = +30-40% MORE REGISTRATIONS</div>
+                    </div>
+                </div>
+
+                <!-- Show-Up Sequence -->
+                <div class="rec-card">
+                    <span class="rec-number">2</span>
+                    <h3 class="rec-title">SHOW-UP EMAIL SEQUENCE (6-7 EMAILS)</h3>
+                    <div class="rec-content">
+                        <p><strong>For "Schedule for Later" Registrants Only</strong></p>
+
+                        <p><strong>Email 1: Confirmation (Sent Immediately)</strong></p>
+                        <div class="code-example">SUBJECT: "You're registered! Here's what happens next..."
+
+BODY:
+You're confirmed for the workshop on [DATE] at [TIME].
+
+Here's what to do right now:
+
+✓ Add this to your calendar (one-click button)
+✓ Download the FREE 16-Page Hiring Handbook
+✓ Watch this 60-second prep video
+
+See you on [DATE]!
+
+CTA: Add To Calendar</div>
+
+                        <p><strong>Email 2: Pattern Interrupt Story (Day -2 or -3)</strong></p>
+                        <div class="code-example">SUBJECT: "The 80/20 rule is lying to you"
+
+BODY:
+Everyone tells you to "focus on the 20% that matters."
+
+But here's what they don't tell you...
+
+That 20% changes every 6 months in your business.
+
+What got you to $1M won't get you to $5M.
+
+In the workshop on [DATE], I'll show you the NEW 80/20 for businesses at YOUR stage.
+
+CTA: Don't Miss This Workshop</div>
+
+                        <p><strong>Email 3: Case Study (Day -1)</strong></p>
+                        <div class="code-example">SUBJECT: "How Dr. Jillian went from 80-hour weeks to 25 hours (real numbers)"
+
+BODY:
+Dr. Jillian was working 80 hours/week.
+6% profit margin.
+About to quit.
+
+90 days later:
+→ Working 25 hours/week
+→ 31% profit margin
+→ Team running without her
+
+How? She implemented the exact system I'm teaching tomorrow.
+
+[Full case study]
+
+CTA: See You Tomorrow At [TIME]</div>
+
+                        <p><strong>Email 4: Objection Handler (6-8 hours before)</strong></p>
+                        <div class="code-example">SUBJECT: "Quick question before today's workshop..."
+
+BODY:
+Quick question: Have you tried "systems" before?
+
+Did they fail because:
+❌ Your team didn't follow them?
+❌ They were too complicated?
+❌ You didn't have time to implement them?
+
+Today's workshop addresses all three.
+
+I'll show you the SIMPLE system that actually gets followed.
+
+Starting in 6 hours. See you there.
+
+CTA: Click Here To Join</div>
+
+                        <p><strong>Email 5: 1-Hour Reminder</strong></p>
+                        <div class="code-example">SUBJECT: "Starting in 1 hour"
+
+BODY:
+Workshop starts in 60 minutes.
+
+Here's your link: [LINK]
+
+What to have ready:
+→ Notebook
+→ Quiet space
+→ 60 minutes of focused time
+
+This will be the most valuable hour of your week.
+
+CTA: Join The Workshop</div>
+
+                        <p><strong>Email 6: 15-Minute Reminder</strong></p>
+                        <div class="code-example">SUBJECT: "We're starting in 15 minutes"
+
+BODY:
+Just a heads up—we're going live in 15 minutes.
+
+Grab your coffee, find a quiet spot, and click here: [LINK]
+
+See you in 15!
+
+CTA: Join Now</div>
+
+                        <p><strong>Email 7: "Starting Now" (At Start Time)</strong></p>
+                        <div class="code-example">SUBJECT: "We're LIVE right now"
+
+BODY:
+We just started!
+
+Click here to join: [LINK]
+
+CTA: Join The Workshop</div>
+
+                        <p><strong>Expected Show-Up Rate:</strong> 35-40% (vs 25% without optimized sequence)</p>
+
+                        <div class="impact-badge">+10-15% SHOW-UP RATE = +$1M+ ANNUAL</div>
+                    </div>
+                </div>
+
+                <!-- Webinar Content -->
+                <div class="rec-card">
+                    <span class="rec-number">3</span>
+                    <h3 class="rec-title">WEBINAR CONTENT STRATEGY</h3>
+                    <div class="rec-content">
+                        <p><strong>Recommendation:</strong> Re-record your live webinar specifically for evergreen (remove all live/chat references)</p>
+
+                        <p><strong>Why Re-Record vs Use Live Recording:</strong></p>
+                        <ul class="check-list">
+                            <li><strong>Control:</strong> No "calling out attendees in chat" moments</li>
+                            <li><strong>Quality:</strong> Perfect lighting, audio, pacing</li>
+                            <li><strong>Optimization:</strong> Can A/B test different versions</li>
+                            <li><strong>Simplicity:</strong> No fake-live tools needed</li>
+                        </ul>
+
+                        <p><strong>Webinar Structure (Keep What Works):</strong></p>
+                        <div class="code-example">OPENING (10 minutes):
+→ Welcome + who this is for
+→ Set expectations ("In next 60 min, you'll learn...")
+→ Your story/credibility (Inc 5000 awards, 700+ clients)
+
+TEACHING (30 minutes):
+→ The 3-step framework (or whatever you currently teach)
+→ Case studies woven throughout
+→ "Aha moments" that create desire
+
+STACK BUILDING (15 minutes):
+→ "Here's how we help clients implement this..."
+→ Module breakdown (what's included in the program)
+→ Bonuses
+→ Value stack ($62.5K value for $15K investment)
+→ Testimonials (play 2-3 video testimonials)
+
+CLOSE (5 minutes):
+→ Scarcity ("We can only take 50 clients per quarter")
+→ Guarantee ("If you don't save 25% of your time + increase profit, full refund")
+→ Clear CTA ("Click the button below to book your strategy call")
+
+POST-CLOSE:
+→ "Thank you for attending. Check your email for next steps."</div>
+
+                        <p><strong>CRITICAL: Focus On Savings + ROI</strong></p>
+                        <div class="code-example">FRAME IT AS:
+"If you pay $10,000 for this program and it saves you 20 hours/week...
+
+That's 1,000 hours/year.
+
+If your time is worth $200/hour (conservative for a 7-figure owner), that's $200,000 in value.
+
+You're not spending $10K. You're investing $10K to get back $200K.
+
+That's a 20X ROI."
+
+REPEAT THIS FRAME 3-4 TIMES IN THE WEBINAR</div>
+
+                        <p><strong>Testimonial Strategy:</strong> Show TONS of testimonials (like Warrior Babe does)</p>
+                        <ul class="check-list">
+                            <li>Weave 6-8 testimonials throughout webinar</li>
+                            <li>Focus on RESULTS + ROI ("Saved $50K in first 90 days")</li>
+                            <li>Video testimonials > text (more credible)</li>
+                        </ul>
+
+                        <div class="impact-badge">SAVINGS + ROI FRAME = EASIER CLOSE</div>
+                    </div>
+                </div>
+
+                <!-- Post-Webinar -->
+                <div class="rec-card">
+                    <span class="rec-number">4</span>
+                    <h3 class="rec-title">POST-WEBINAR SEQUENCE (48 HOURS)</h3>
+                    <div class="rec-content">
+                        <p><strong>After webinar ends, attendees get 48-hour replay access + urgency sequence</strong></p>
+
+                        <p><strong>Email 1: Thanks + Replay (Sent Immediately After Webinar)</strong></p>
+                        <div class="code-example">SUBJECT: "Here's your replay + next steps"
+
+BODY:
+Thanks for attending!
+
+Here's what to do next:
+
+1. Watch the replay if you missed anything: [LINK]
+   (Available for 48 hours only)
+
+2. Book your strategy call: [LINK]
+   (We have 12 spots left for January)
+
+3. Download the bonus: [16-Page Hiring Handbook]
+
+Remember: If you don't save 25% of your time + increase profit, you get a full refund.
+
+The only risk is staying stuck.
+
+CTA: Book Your Strategy Call Now</div>
+
+                        <p><strong>Email 2: FAQ + Objection Crusher (12 hours later)</strong></p>
+                        <div class="code-example">SUBJECT: "3 questions I'm getting about the workshop..."
+
+BODY:
+After the workshop, I always get the same 3 questions:
+
+Q1: "What if I don't have a big team yet?"
+A: You don't need one. Most of our clients have 0-2 people when they start.
+
+Q2: "What if I've tried systems before and they failed?"
+A: Our system is different. It's designed for businesses at YOUR stage.
+
+Q3: "What if this doesn't work for me?"
+A: You get a full refund if you don't see results in 6 months.
+
+Ready to get started?
+
+CTA: Book Your Call Here
+
+P.S. Replay expires in 36 hours: [LINK]</div>
+
+                        <p><strong>Email 3: Case Study (24 hours before deadline)</strong></p>
+                        <div class="code-example">SUBJECT: "How Lauren went from $400K to $2.8M"
+
+BODY:
+Lauren was stuck at $400K/year.
+
+Working 70 hours/week.
+
+Couldn't scale because she was the bottleneck.
+
+Then she implemented our system.
+
+18 months later:
+→ $2.8M annual revenue
+→ 35 hours/week
+→ Team of 12 running without her
+
+[Full case study]
+
+Want the same results?
+
+CTA: Book Your Call (12 Hours Left)
+
+P.S. Replay expires tonight: [LINK]</div>
+
+                        <p><strong>Email 4: Last Chance (6 hours before deadline)</strong></p>
+                        <div class="code-example">SUBJECT: "Replay expires in 6 hours"
+
+BODY:
+Just a heads up—
+
+Your replay access expires in 6 hours.
+
+And we only have 8 spots left for January.
+
+If you've been thinking about booking a call, now's the time.
+
+CTA: Book Your Strategy Call
+
+P.S. After tonight, you'll have to wait until February to get started.</div>
+
+                        <p><strong>Email 5: Cart Close (At deadline)</strong></p>
+                        <div class="code-example">SUBJECT: "This is it"
+
+BODY:
+Your replay just expired.
+
+And we're closing enrollment for January in the next hour.
+
+If you want to stop working 80-hour weeks...
+
+If you want your team to run without you...
+
+If you want to finally build a business that doesn't own you...
+
+This is your last chance for the next 30 days.
+
+CTA: Book Your Call Now (Spots Closing In 60 Minutes)</div>
+
+                        <p><strong>Expected Results:</strong></p>
+                        <div class="roi-table">
+                            <div class="roi-row">
+                                <span>Attendees Who Book Call:</span>
+                                <span class="roi-value">18-22%</span>
+                            </div>
+                            <div class="roi-row">
+                                <span>Average Attendees Per Day:</span>
+                                <span class="roi-value">30-50</span>
+                            </div>
+                            <div class="roi-row">
+                                <span>Calls Booked Per Day:</span>
+                                <span class="roi-value">6-10</span>
+                            </div>
+                            <div class="roi-row">
+                                <span>Close Rate on Calls:</span>
+                                <span class="roi-value">25%</span>
+                            </div>
+                            <div class="roi-row" style="border-top: 3px solid var(--white);">
+                                <span>Sales Per Day:</span>
+                                <span class="roi-value">1-2 ($10K-20K/day)</span>
+                            </div>
+                        </div>
+
+                        <div class="impact-badge">48-HOUR DEADLINE = URGENCY WITHOUT PRESSURE</div>
+                    </div>
+                </div>
+
+                <!-- No-Show Sequence -->
+                <div class="rec-card">
+                    <span class="rec-number">5</span>
+                    <h3 class="rec-title">NO-SHOW SEQUENCE (FOR REGISTRANTS WHO DIDN'T ATTEND)</h3>
+                    <div class="rec-content">
+                        <p><strong>65-75% of registrants won't attend. Don't leave them behind.</strong></p>
+
+                        <p><strong>Email 1: "You Missed It" (Sent 1 hour after webinar)</strong></p>
+                        <div class="code-example">SUBJECT: "Sorry we missed you..."
+
+BODY:
+I noticed you couldn't make the workshop today.
+
+No worries—life happens.
+
+Here's the good news: I saved your replay.
+
+You can watch it here: [LINK]
+
+(Available for 48 hours)
+
+See you inside!
+
+CTA: Watch The Replay</div>
+
+                        <p><strong>Email 2: "What You Missed" (12 hours later)</strong></p>
+                        <div class="code-example">SUBJECT: "Here's what we covered in the workshop..."
+
+BODY:
+In case you're wondering what you missed:
+
+→ Why hiring more people makes life WORSE (and the fix)
+→ The 80/20 Operations System that freed up 25+ hours/week
+→ How to stop being the bottleneck without losing control
+
+Plus: 3 case studies of business owners who went from 80-hour weeks to 25 hours.
+
+Your replay expires in 36 hours.
+
+CTA: Watch Now</div>
+
+                        <p><strong>Email 3: "Replay Expiring" (12 hours before deadline)</strong></p>
+                        <div class="code-example">SUBJECT: "Your replay expires tonight"
+
+BODY:
+Just a reminder—your replay access expires tonight at midnight.
+
+If you've been meaning to watch it, now's the time.
+
+CTA: Watch Before It's Gone</div>
+
+                        <p><strong>Expected No-Show Conversion:</strong> 10-15% of no-shows will watch replay and book calls</p>
+
+                        <div class="impact-badge">NO-SHOW SEQUENCE = +$30K-50K/MONTH</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evergreen Summary -->
+            <div class="roi-table">
+                <h3 style="margin-bottom: 2rem;">EVERGREEN WEBINAR: PERFORMANCE SUMMARY</h3>
+                <div class="roi-row">
+                    <span>Daily Registrations (at $18 CPL):</span>
+                    <span class="roi-value">100-150</span>
+                </div>
+                <div class="roi-row">
+                    <span>Daily Attendees (35% show-up):</span>
+                    <span class="roi-value">35-52</span>
+                </div>
+                <div class="roi-row">
+                    <span>Daily Calls Booked (20% rate):</span>
+                    <span class="roi-value">7-10</span>
+                </div>
+                <div class="roi-row">
+                    <span>Daily Sales (25% close):</span>
+                    <span class="roi-value">2 ($20K)</span>
+                </div>
+                <div class="roi-row">
+                    <span>Monthly Revenue:</span>
+                    <span class="roi-value">$300K-400K</span>
+                </div>
+                <div class="roi-row" style="border-top: 3px solid var(--white);">
+                    <span>Annual Revenue:</span>
+                    <span class="roi-value">$3.6M</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIZ FUNNEL -->
+    <section id="quiz-funnel" class="section section-light">
+        <div class="container">
+            <h2>SECTION 4: QUIZ FUNNEL (COMPLETE BUILD)</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">Your secondary funnel for warm traffic, retargeting, and fast segmentation.</p>
+
+            <div class="recommendations">
+                <!-- Quiz Structure -->
+                <div class="rec-card">
+                    <span class="rec-number">1</span>
+                    <h3 class="rec-title">QUIZ STRUCTURE: "WHAT'S YOUR BUSINESS BOTTLENECK?"</h3>
+                    <div class="rec-content">
+                        <p><strong>Quiz Landing Page:</strong></p>
+                        <div class="code-example">HEADLINE:
+"What's Your #1 Business Bottleneck?"
+
+SUBHEADLINE:
+"Take this 2-minute quiz to discover what's REALLY keeping you stuck at your current revenue level"
+
+IMAGE: Photo of Stacy
+
+BULLETS:
+✓ Discover your biggest operational weakness
+✓ Get a personalized action plan
+✓ See how 700+ business owners solved the same bottleneck
+
+CTA: "Take The Quiz (2 Minutes)"</div>
+
+                        <p><strong>Quiz Questions (8-10 total):</strong></p>
+
+                        <div class="code-example">Q1: What's your current annual revenue?
+□ Under $500K
+□ $500K - $1M
+□ $1M - $5M
+□ $5M+
+
+Q2: How many hours per week do you work IN the business?
+□ 60+ hours
+□ 40-60 hours
+□ 20-40 hours
+□ Under 20 hours
+
+Q3: What's your biggest operational challenge right now?
+□ Can't find qualified team members
+□ Team exists but constantly needs me
+□ Systems don't exist or aren't followed
+□ Overwhelmed by daily firefighting
+
+Q4: What happens when you take a week off?
+□ Business falls apart completely
+□ Lots of urgent texts/calls from team
+□ Some issues but team handles most
+□ Business runs smoothly without me
+
+Q5: How many direct reports do you have?
+□ 0 (I do everything)
+□ 1-3 people
+□ 4-10 people
+□ 10+ people
+
+Q6: Which best describes your current systems?
+□ What systems? Everything's in my head
+□ We have some SOPs but no one follows them
+□ Systems exist and are mostly followed
+□ Fully documented, team-run systems
+
+Q7: What's your biggest frustration right now?
+□ I'm the bottleneck for everything
+□ Team makes costly mistakes when I'm not watching
+□ Can't find people who care like I do
+□ Revenue is stuck at current level
+
+Q8: If you could wave a magic wand, what would change?
+□ Team that runs without me
+□ More time for strategy/CEO work
+□ Predictable, scalable systems
+□ Freedom to take vacations guilt-free
+
+Q9: Have you tried to fix this before?
+□ Never tried (don't know where to start)
+□ Tried but failed (team didn't follow)
+□ Tried multiple times, still stuck
+□ Made some progress but not enough
+
+Q10: How soon do you want to solve this?
+□ ASAP (I'm desperate)
+□ Within 3 months
+□ Within 6 months
+□ Just exploring options</div>
+
+                        <p><strong>Quiz Logic: Segment Into 4 Bottleneck Types</strong></p>
+                        <ul class="check-list">
+                            <li><strong>Bottleneck 1:</strong> TIME MANAGEMENT (works 60+ hours, firefighting)</li>
+                            <li><strong>Bottleneck 2:</strong> TEAM DELEGATION (has team but can't trust them)</li>
+                            <li><strong>Bottleneck 3:</strong> SYSTEMS/PROCESSES (no documentation, chaos)</li>
+                            <li><strong>Bottleneck 4:</strong> HIRING/TALENT (can't find good people)</li>
+                        </ul>
+
+                        <div class="impact-badge">4 BOTTLENECK TYPES = 4 PERSONALIZED PATHS</div>
+                    </div>
+                </div>
+
+                <!-- Result Pages -->
+                <div class="rec-card">
+                    <span class="rec-number">2</span>
+                    <h3 class="rec-title">RESULT PAGES (PERSONALIZED BY BOTTLENECK)</h3>
+                    <div class="rec-content">
+                        <p><strong>Example: "Your Bottleneck Is TIME MANAGEMENT"</strong></p>
+
+                        <div class="code-example">HEADLINE:
+"Your #1 Bottleneck: TIME MANAGEMENT"
+
+SUBHEADLINE:
+"You're working 60+ hours per week because you're stuck IN the business instead of ON the business"
+
+BODY:
+Here's what's happening:
+
+❌ You're firefighting instead of strategizing
+❌ Every decision flows through you
+❌ You can't take time off without the business falling apart
+❌ Revenue is stuck because YOU'RE the bottleneck
+
+Good news: This is fixable.
+
+Here's how 700+ business owners solved this:
+
+CASE STUDY: Dr. Jillian's Story
+[Video thumbnail]
+→ Was working 80 hours/week
+→ 90 days later: Down to 25 hours/week
+→ Profit margin went from 6% to 31%
+
+How? The 80/20 Operations System
+
+WHAT YOU NEED:
+✓ Time-blocking system (strategic vs reactive time)
+✓ Delegation framework (what to delegate first)
+✓ Team structure (who does what)
+✓ SOPs for your top 20% activities
+
+NEXT STEP:
+Book a free 60-minute strategy call.
+
+We'll audit your current operations and show you exactly how to free up 20+ hours per week.
+
+CTA: "Book My Free Strategy Call"
+
+P.S. We can only take 50 clients per quarter. If you're ready to stop working 80-hour weeks, book your call now.</div>
+
+                        <p><strong>Other Result Pages (Same Structure, Different Content):</strong></p>
+                        <ul class="check-list">
+                            <li><strong>Team Delegation Bottleneck:</strong> Case study of client who built autonomous team</li>
+                            <li><strong>Systems/Processes Bottleneck:</strong> Case study of client who documented everything</li>
+                            <li><strong>Hiring/Talent Bottleneck:</strong> Case study of client who solved hiring</li>
+                        </ul>
+
+                        <p><strong>Why Personalized Results Work:</strong></p>
+                        <ul class="check-list">
+                            <li>User feels SEEN ("This is exactly my problem!")</li>
+                            <li>Case study matches their specific pain point</li>
+                            <li>Solution feels tailored (even though it's the same program)</li>
+                            <li>Sales team knows their bottleneck before call</li>
+                        </ul>
+
+                        <div class="impact-badge">PERSONALIZATION = 2X CONVERSION</div>
+                    </div>
+                </div>
+
+                <!-- Quiz Follow-Up -->
+                <div class="rec-card">
+                    <span class="rec-number">3</span>
+                    <h3 class="rec-title">QUIZ FOLLOW-UP SEQUENCE</h3>
+                    <div class="rec-content">
+                        <p><strong>Email 1: Result Recap (Sent Immediately)</strong></p>
+                        <div class="code-example">SUBJECT: "Your result: TIME MANAGEMENT bottleneck"
+
+BODY:
+Thanks for taking the quiz!
+
+Your #1 bottleneck is TIME MANAGEMENT.
+
+Here's what that means:
+→ You're stuck IN the business (firefighting)
+→ Every decision flows through you
+→ You can't take time off
+
+Here's the good news: You're not alone.
+
+73% of 7-figure business owners have this same bottleneck.
+
+And it's fixable in 90 days.
+
+Watch this case study: [Dr. Jillian's story]
+
+Ready to fix this?
+
+CTA: Book Your Free Strategy Call</div>
+
+                        <p><strong>Email 2: Deep Dive (24 hours later)</strong></p>
+                        <div class="code-example">SUBJECT: "Why you're stuck in TIME MANAGEMENT mode..."
+
+BODY:
+Yesterday you discovered your bottleneck is TIME MANAGEMENT.
+
+Let me show you WHY this is happening:
+
+1. You don't have a delegation framework
+2. Your team doesn't have clear ownership
+3. You're treating all tasks as equally important
+
+Here's the fix: [Link to blog post / video]
+
+Want help implementing this?
+
+CTA: Book A Strategy Call</div>
+
+                        <p><strong>Email 3: Urgency (48 hours later)</strong></p>
+                        <div class="code-example">SUBJECT: "12 spots left for January"
+
+BODY:
+Quick update—
+
+We only have 12 spots left for January.
+
+If you want to solve your TIME MANAGEMENT bottleneck, you need to book your call this week.
+
+After Friday, you'll have to wait until February.
+
+CTA: Book Your Call (12 Spots Left)</div>
+
+                        <p><strong>Email 4: Last Chance (72 hours later)</strong></p>
+                        <div class="code-example">SUBJECT: "Final call for January enrollment"
+
+BODY:
+This is your last chance to get started in January.
+
+We're closing enrollment tomorrow at midnight.
+
+If you're ready to stop working 80-hour weeks...
+
+If you're ready to build a team that runs without you...
+
+This is it.
+
+CTA: Book Your Call Now</div>
+
+                        <div class="impact-badge">4-EMAIL SEQUENCE = 15-20% CONVERSION</div>
+                    </div>
+                </div>
+
+                <!-- Traffic Strategy -->
+                <div class="rec-card">
+                    <span class="rec-number">4</span>
+                    <h3 class="rec-title">QUIZ FUNNEL TRAFFIC STRATEGY</h3>
+                    <div class="rec-content">
+                        <p><strong>Where To Send Quiz Traffic:</strong></p>
+
+                        <p><strong>1. Retargeting Ads (Primary Source)</strong></p>
+                        <ul class="check-list">
+                            <li>Website visitors (didn't register for webinar)</li>
+                            <li>Webinar registrants who didn't show up</li>
+                            <li>Webinar attendees who didn't book call</li>
+                            <li>Email subscribers (existing list)</li>
+                        </ul>
+
+                        <p><strong>2. Social Media (Organic + Paid)</strong></p>
+                        <ul class="check-list">
+                            <li>Instagram stories: "Take my business bottleneck quiz"</li>
+                            <li>Facebook posts to followers</li>
+                            <li>LinkedIn posts to connections</li>
+                            <li>YouTube community tab</li>
+                        </ul>
+
+                        <p><strong>3. Email List</strong></p>
+                        <ul class="check-list">
+                            <li>Send to existing subscribers</li>
+                            <li>"Take this 2-min quiz to discover your bottleneck"</li>
+                            <li>Can segment list based on quiz results</li>
+                        </ul>
+
+                        <p><strong>Ad Creative Example:</strong></p>
+                        <div class="code-example">HEADLINE:
+"What's Your #1 Business Bottleneck?"
+
+IMAGE: Photo of Stacy pointing at camera
+
+BODY:
+Take this 2-minute quiz to discover what's keeping you stuck at your current revenue level.
+
+700+ business owners have used this to identify their biggest operational weakness.
+
+CTA: "Take The Quiz"
+
+AD TARGETING:
+→ Website visitors (last 30 days)
+→ Webinar no-shows
+→ Email list lookalikes</div>
+
+                        <p><strong>Expected Cost:</strong></p>
+                        <div class="roi-table">
+                            <div class="roi-row">
+                                <span>Quiz Opt-In Cost:</span>
+                                <span class="roi-value">$8-12</span>
+                            </div>
+                            <div class="roi-row">
+                                <span>vs Webinar Registration Cost:</span>
+                                <span class="roi-value">$32.50</span>
+                            </div>
+                            <div class="roi-row" style="border-top: 3px solid var(--black);">
+                                <span>Savings:</span>
+                                <span class="roi-value">60-70% lower CPA</span>
+                            </div>
+                        </div>
+
+                        <div class="impact-badge">QUIZ = 3X CHEAPER THAN WEBINAR LEADS</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Summary -->
+            <div class="roi-table">
+                <h3 style="margin-bottom: 2rem;">QUIZ FUNNEL: PERFORMANCE SUMMARY</h3>
+                <div class="roi-row">
+                    <span>Monthly Quiz Opt-Ins (at $10 CPL):</span>
+                    <span class="roi-value">500-800</span>
+                </div>
+                <div class="roi-row">
+                    <span>Completion Rate:</span>
+                    <span class="roi-value">60-70%</span>
+                </div>
+                <div class="roi-row">
+                    <span>Completed Quizzes:</span>
+                    <span class="roi-value">300-560</span>
+                </div>
+                <div class="roi-row">
+                    <span>Call Booking Rate:</span>
+                    <span class="roi-value">15-20%</span>
+                </div>
+                <div class="roi-row">
+                    <span>Monthly Calls Booked:</span>
+                    <span class="roi-value">45-112</span>
+                </div>
+                <div class="roi-row">
+                    <span>Close Rate:</span>
+                    <span class="roi-value">20-25%</span>
+                </div>
+                <div class="roi-row">
+                    <span>Monthly Sales:</span>
+                    <span class="roi-value">9-28</span>
+                </div>
+                <div class="roi-row" style="border-top: 3px solid var(--black);">
+                    <span>Monthly Revenue:</span>
+                    <span class="roi-value">$45K-140K</span>
+                </div>
+                <div class="roi-row">
+                    <span>Annual Revenue:</span>
+                    <span class="roi-value">$540K-1.68M</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPLEMENTATION ROADMAP -->
+    <section id="implementation" class="section section-dark">
+        <div class="container">
+            <h2>SECTION 5: 90-DAY IMPLEMENTATION ROADMAP</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">How to build both funnels without overwhelming your team.</p>
+
+            <div class="recommendations">
+                <!-- Month 1 -->
+                <div class="rec-card">
+                    <span class="rec-number">1</span>
+                    <h3 class="rec-title">MONTH 1: BUILD EVERGREEN WEBINAR</h3>
+                    <div class="rec-content">
+                        <p><strong>Week 1-2: Content Production</strong></p>
+                        <ul class="check-list">
+                            <li>Re-record live webinar (remove chat/live references)</li>
+                            <li>Professional editing (cuts, transitions, captions)</li>
+                            <li>Export final 60-min version</li>
+                        </ul>
+
+                        <p><strong>Week 3: Registration Page + Thank You Page</strong></p>
+                        <ul class="check-list">
+                            <li>Design registration page (with "Watch Now" + "Schedule Later" options)</li>
+                            <li>Add 60-90 sec teaser video</li>
+                            <li>Build thank you page (calendar add, handbook download)</li>
+                            <li>Technical setup (forms, redirects, automations)</li>
+                        </ul>
+
+                        <p><strong>Week 4: Email Sequences</strong></p>
+                        <ul class="check-list">
+                            <li>Write show-up sequence (6-7 emails)</li>
+                            <li>Write post-webinar sequence (5 emails)</li>
+                            <li>Write no-show sequence (3 emails)</li>
+                            <li>Set up automation triggers</li>
+                        </ul>
+
+                        <p><strong>End of Month 1:</strong> Evergreen webinar ready to test</p>
+                    </div>
+                </div>
+
+                <!-- Month 2 -->
+                <div class="rec-card">
+                    <span class="rec-number">2</span>
+                    <h3 class="rec-title">MONTH 2: TEST & OPTIMIZE EVERGREEN WEBINAR</h3>
+                    <div class="rec-content">
+                        <p><strong>Week 1-2: Small Traffic Test</strong></p>
+                        <ul class="check-list">
+                            <li>Send 500-1,000 clicks to registration page</li>
+                            <li>Track: Registration rate, show-up rate, call booking rate</li>
+                            <li>Identify bottlenecks</li>
+                        </ul>
+
+                        <p><strong>Week 3-4: Optimization Sprint</strong></p>
+                        <ul class="check-list">
+                            <li>A/B test registration page headlines</li>
+                            <li>A/B test email subject lines</li>
+                            <li>Adjust webinar pacing if needed</li>
+                            <li>Optimize CPL (goal: $32.50 → $18)</li>
+                        </ul>
+
+                        <p><strong>End of Month 2:</strong> Evergreen webinar optimized and scaled</p>
+                    </div>
+                </div>
+
+                <!-- Month 3 -->
+                <div class="rec-card">
+                    <span class="rec-number">3</span>
+                    <h3 class="rec-title">MONTH 3: ADD QUIZ FUNNEL</h3>
+                    <div class="rec-content">
+                        <p><strong>Week 1: Quiz Build</strong></p>
+                        <ul class="check-list">
+                            <li>Write 8-10 quiz questions</li>
+                            <li>Define 4 bottleneck types</li>
+                            <li>Build quiz logic (scoring/segmentation)</li>
+                            <li>Technical setup (quiz tool like Typeform, Interact, or custom)</li>
+                        </ul>
+
+                        <p><strong>Week 2: Result Pages</strong></p>
+                        <ul class="check-list">
+                            <li>Create 4 result pages (one per bottleneck)</li>
+                            <li>Add case study videos</li>
+                            <li>Add call booking CTAs</li>
+                        </ul>
+
+                        <p><strong>Week 3: Email Sequence</strong></p>
+                        <ul class="check-list">
+                            <li>Write 4-email follow-up sequence</li>
+                            <li>Segment by bottleneck type</li>
+                            <li>Set up automation</li>
+                        </ul>
+
+                        <p><strong>Week 4: Launch + Test</strong></p>
+                        <ul class="check-list">
+                            <li>Send to retargeting audiences</li>
+                            <li>Post on social media</li>
+                            <li>Email existing list</li>
+                            <li>Track completion rate + call booking rate</li>
+                        </ul>
+
+                        <p><strong>End of Month 3:</strong> Both funnels live and generating revenue</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="roi-table">
+                <h3 style="margin-bottom: 2rem;">IMPLEMENTATION TIMELINE</h3>
+                <div class="roi-row">
+                    <span>Month 1:</span>
+                    <span>Build Evergreen Webinar</span>
+                </div>
+                <div class="roi-row">
+                    <span>Month 2:</span>
+                    <span>Test & Optimize</span>
+                </div>
+                <div class="roi-row">
+                    <span>Month 3:</span>
+                    <span>Add Quiz Funnel</span>
+                </div>
+                <div class="roi-row" style="border-top: 3px solid var(--white);">
+                    <span>By Day 90:</span>
+                    <span class="roi-value">Both Funnels Live</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI PROJECTIONS -->
+    <section id="roi" class="section section-light">
+        <div class="container">
+            <h2>SECTION 6: ROI PROJECTIONS</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem;">Conservative estimates based on your current performance data.</p>
+
+            <div class="roi-table">
+                <h3 style="margin-bottom: 2rem;">CURRENT STATE (LIVE WEBINARS ONLY)</h3>
+                <div class="roi-row">
+                    <span>Live Webinars Per Year:</span>
+                    <span class="roi-value">24</span>
+                </div>
+                <div class="roi-row">
+                    <span>Revenue Per Webinar:</span>
+                    <span class="roi-value">$196K</span>
+                </div>
+                <div class="roi-row" style="border-top: 3px solid var(--black);">
+                    <span>Total Annual Revenue:</span>
+                    <span class="roi-value">$4.7M</span>
+                </div>
+            </div>
+
+            <div class="roi-table" style="margin-top: 3rem;">
+                <h3 style="margin-bottom: 2rem;">FUTURE STATE (2-FUNNEL STRATEGY)</h3>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="color: var(--red);">FUNNEL #1: EVERGREEN WEBINAR</h4>
+                </div>
+                <div class="roi-row">
+                    <span>Daily Revenue:</span>
+                    <span class="roi-value">$10K-15K</span>
+                </div>
+                <div class="roi-row">
+                    <span>Monthly Revenue:</span>
+                    <span class="roi-value">$300K-450K</span>
+                </div>
+                <div class="roi-row">
+                    <span>Annual Revenue:</span>
+                    <span class="roi-value">$3.6M-5.4M</span>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h4 style="color: var(--red);">FUNNEL #2: QUIZ FUNNEL</h4>
+                </div>
+                <div class="roi-row">
+                    <span>Monthly Revenue:</span>
+                    <span class="roi-value">$45K-140K</span>
+                </div>
+                <div class="roi-row">
+                    <span>Annual Revenue:</span>
+                    <span class="roi-value">$540K-1.68M</span>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h4 style="color: var(--red);">COMBINED TOTAL</h4>
+                </div>
+                <div class="roi-row">
+                    <span>Total Annual Revenue:</span>
+                    <span class="roi-value">$4.14M-7.08M</span>
+                </div>
+                <div class="roi-row" style="border-top: 3px solid var(--black); font-size: 1.5rem;">
+                    <span>vs Current $4.7M:</span>
+                    <span class="roi-value">-$560K to +$2.38M</span>
+                </div>
+            </div>
+
+            <div class="recommendations" style="margin-top: 3rem;">
+                <div class="rec-card">
+                    <span class="rec-number">📊</span>
+                    <h3 class="rec-title">CONSERVATIVE VS REALISTIC VS AGGRESSIVE</h3>
+                    <div class="rec-content">
+                        <p><strong>Conservative Scenario (70% of live performance):</strong></p>
+                        <div class="code-example">Evergreen Webinar: $3.6M/year
+Quiz Funnel: $540K/year
+TOTAL: $4.14M/year
+
+Difference vs Current: -$560K
+(Still valuable as it removes your time constraint)</div>
+
+                        <p><strong>Realistic Scenario (80% of live + optimized quiz):</strong></p>
+                        <div class="code-example">Evergreen Webinar: $4.5M/year
+Quiz Funnel: $900K/year
+TOTAL: $5.4M/year
+
+Difference vs Current: +$700K</div>
+
+                        <p><strong>Aggressive Scenario (90% of live + optimized quiz):</strong></p>
+                        <div class="code-example">Evergreen Webinar: $5.4M/year
+Quiz Funnel: $1.68M/year
+TOTAL: $7.08M/year
+
+Difference vs Current: +$2.38M</div>
+
+                        <p><strong>Key Insight:</strong> Even at 70% of live performance, you gain:</p>
+                        <ul class="check-list">
+                            <li>24/7 revenue generation (not limited to 24 webinars/year)</li>
+                            <li>No time commitment from Stacy</li>
+                            <li>Ability to optimize perpetually</li>
+                            <li>Second funnel (quiz) captures warm traffic you're currently missing</li>
+                        </ul>
+
+                        <div class="impact-badge">REALISTIC TARGET: +$700K-2.4M ANNUAL</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Summary -->
+            <div class="roi-table" style="margin-top: 3rem; border: 4px solid var(--red);">
+                <h3 style="margin-bottom: 2rem; color: var(--red);">BOTTOM LINE</h3>
+                <div class="roi-row">
+                    <span>Current Annual Revenue:</span>
+                    <span class="roi-value">$4.7M</span>
+                </div>
+                <div class="roi-row">
+                    <span>Projected Annual Revenue (Conservative):</span>
+                    <span class="roi-value">$5.4M</span>
+                </div>
+                <div class="roi-row">
+                    <span>Additional Revenue:</span>
+                    <span class="roi-value">+$700K</span>
+                </div>
+                <div class="roi-row">
+                    <span>Implementation Time:</span>
+                    <span class="roi-value">90 Days</span>
+                </div>
+                <div class="roi-row">
+                    <span>Stacy's Time Required After Launch:</span>
+                    <span class="roi-value">0 Hours</span>
+                </div>
+                <div class="roi-row" style="border-top: 4px solid var(--red); font-size: 1.75rem;">
+                    <span>ROI:</span>
+                    <span class="roi-value">INFINITE (Automation)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section section-red">
+        <div class="container" style="text-align: center;">
+            <h2>NEXT STEPS</h2>
+            <p style="font-size: 1.5rem; margin: 2rem 0;">Your VSL isn't working. Your live webinars are limited to 24/year.</p>
+            <p style="font-size: 1.5rem; margin: 2rem 0;">The 2-funnel evergreen strategy solves both problems.</p>
+            <div class="impact-badge" style="font-size: 2rem; padding: 1.5rem 2rem;">READY TO SCALE TO $8M+?</div>
+            <p style="font-size: 1.25rem; margin-top: 3rem;">Let's build this together.</p>
+        </div>
+    </section>
+
+</body>
+</html>
